@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else navbar.classList.remove('scrolled');
     });
 
-    // --- SPA Routing & Mobile Menu ---
+    // --- Mobile Menu & Smooth Scroll Routing ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     
@@ -416,13 +416,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const targetSection = document.querySelector(targetId);
             if (targetSection) {
-                // SPA Routing Logic
-                document.querySelectorAll('section, footer').forEach(sec => sec.classList.remove('active-section'));
-                targetSection.classList.add('active-section');
-                
-                // Reset scroll
-                window.scrollTo({ top: 0 });
-                if (typeof lenis !== 'undefined') lenis.scrollTo(0, { immediate: true });
+                // Scroll to section smoothly using Lenis (or fallback)
+                if (typeof lenis !== 'undefined') {
+                    lenis.scrollTo(targetSection, { offset: -100 });
+                } else {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
                 
                 // Close mobile menu if open
                 if (navLinks && navLinks.classList.contains('active')) {
@@ -433,6 +435,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Scroll-Spy Active Highlighting ---
+    const sections = document.querySelectorAll('section, footer');
+    const navItems = document.querySelectorAll('.nav-links a:not(.btn)');
+    
+    const spyOptions = {
+        root: null,
+        rootMargin: '-150px 0px -50% 0px',
+        threshold: 0
+    };
+    
+    const scrollSpy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navItems.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${entry.target.id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, spyOptions);
+    
+    sections.forEach(sec => scrollSpy.observe(sec));
 
     // --- Modal Logic ---
     const modal = document.getElementById('liveModal');
