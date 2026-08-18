@@ -156,6 +156,7 @@ section, footer {
     padding: 120px 0;
     border-bottom: 1px solid var(--border-glass);
     position: relative;
+    min-height: 100vh;
 }
 
 section:nth-child(even) {
@@ -205,6 +206,9 @@ section:nth-child(even) {
 
 .loader-overlay.hidden {
     transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    display: none !important;
 }
 
 .loader-text {

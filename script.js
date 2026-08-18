@@ -138,80 +138,92 @@ function setLanguage(lang) {
 function renderServices() {
     const grid = document.getElementById('servicesGrid');
     if (!grid) return;
+    const oldHTML = grid.innerHTML;
     grid.innerHTML = '<div class="loader" style="margin: 0 auto; padding: 2rem;"></div>';
     
     setTimeout(() => {
-        let html = '';
-        translations[currentLang].agencyServices.forEach((service, index) => {
-            const delayClass = `delay-${(index % 4) + 1}`;
-            html += `
-                <div class="service-card reveal-on-scroll ${delayClass}">
-                    <div class="service-icon">${service.icon}</div>
-                    <h3 class="service-title">${service.title}</h3>
-                    <p class="service-desc">${service.desc}</p>
-                    <div class="service-tech">${service.tech}</div>
-                </div>
-            `;
-        });
-        grid.innerHTML = html;
+        try {
+            let html = '';
+            translations[currentLang].agencyServices.forEach((service, index) => {
+                const delayClass = `delay-${(index % 4) + 1}`;
+                html += `
+                    <div class="service-card reveal-on-scroll ${delayClass}">
+                        <div class="service-icon">${service.icon}</div>
+                        <h3 class="service-title">${service.title}</h3>
+                        <p class="service-desc">${service.desc}</p>
+                        <div class="service-tech">${service.tech}</div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        } catch(err) {
+            grid.innerHTML = oldHTML;
+            console.error("Failed to render services:", err);
+        }
     }, 300);
 }
 
 function renderProjects() {
     const grid = document.getElementById('portfolioGrid');
     if (!grid) return;
+    const oldHTML = grid.innerHTML;
     grid.innerHTML = '<div class="loader" style="margin: 0 auto; padding: 2rem;"></div>';
     
     setTimeout(() => {
-        let html = '';
-        translations[currentLang].clientProjects.forEach((project, index) => {
-            const delayClass = `delay-${(index % 4) + 1}`;
-            html += `
-                <article class="work-card reveal-on-scroll ${delayClass}">
-                    <div class="card-image-wrapper cursor-trigger" data-cursor="View" data-url="${project.liveUrl}" data-title="${project.title}">
-                        <img src="${project.image}" alt="${project.title}" class="project-img">
-                    </div>
-                    <div class="card-info">
-                        <div>
-                            <h3 class="card-title">${project.title}</h3>
-                            <p class="card-tech">${project.client} &nbsp;•&nbsp; ${project.tech}</p>
+        try {
+            let html = '';
+            translations[currentLang].clientProjects.forEach((project, index) => {
+                const delayClass = `delay-${(index % 4) + 1}`;
+                html += `
+                    <article class="work-card reveal-on-scroll ${delayClass}">
+                        <div class="card-image-wrapper cursor-trigger" data-cursor="View" data-url="${project.liveUrl}" data-title="${project.title}">
+                            <img src="${project.image}" alt="${project.title}" class="project-img">
                         </div>
-                    </div>
-                </article>
-            `;
-        });
-        grid.innerHTML = html;
+                        <div class="card-info">
+                            <div>
+                                <h3 class="card-title">${project.title}</h3>
+                                <p class="card-tech">${project.client} &nbsp;•&nbsp; ${project.tech}</p>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            });
+            grid.innerHTML = html;
 
-        // Re-bind click listeners for the newly injected cards
-        document.querySelectorAll('.card-image-wrapper').forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = trigger.getAttribute('data-url');
-                const title = trigger.getAttribute('data-title');
-                if(url) {
-                    const iframe = document.getElementById('liveIframe');
-                    const modal = document.getElementById('liveModal');
-                    iframe.src = url;
-                    document.getElementById('modalTitle').textContent = title + " - Live Client Work";
-                    modal.classList.add('active');
-                    modal.setAttribute('aria-hidden', 'false');
-                    document.body.style.overflow = 'hidden';
-                    if (typeof lenis !== 'undefined') lenis.stop();
-                }
+            // Re-bind click listeners for the newly injected cards
+            document.querySelectorAll('.card-image-wrapper').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = trigger.getAttribute('data-url');
+                    const title = trigger.getAttribute('data-title');
+                    if(url) {
+                        const iframe = document.getElementById('liveIframe');
+                        const modal = document.getElementById('liveModal');
+                        iframe.src = url;
+                        document.getElementById('modalTitle').textContent = title + " - Live Client Work";
+                        modal.classList.add('active');
+                        modal.setAttribute('aria-hidden', 'false');
+                        document.body.style.overflow = 'hidden';
+                        if (typeof lenis !== 'undefined') lenis.stop();
+                    }
+                });
+                // Re-bind cursor triggers for new cards
+                trigger.addEventListener('mouseenter', () => {
+                    const cursor = document.querySelector('.custom-cursor');
+                    if(cursor) {
+                        cursor.classList.add('hover-active');
+                        cursor.querySelector('.cursor-text').textContent = trigger.getAttribute('data-cursor') || 'View';
+                    }
+                });
+                trigger.addEventListener('mouseleave', () => {
+                    const cursor = document.querySelector('.custom-cursor');
+                    if(cursor) cursor.classList.remove('hover-active');
+                });
             });
-            // Re-bind cursor triggers for new cards
-            trigger.addEventListener('mouseenter', () => {
-                const cursor = document.querySelector('.custom-cursor');
-                if(cursor) {
-                    cursor.classList.add('hover-active');
-                    cursor.querySelector('.cursor-text').textContent = trigger.getAttribute('data-cursor') || 'View';
-                }
-            });
-            trigger.addEventListener('mouseleave', () => {
-                const cursor = document.querySelector('.custom-cursor');
-                if(cursor) cursor.classList.remove('hover-active');
-            });
-        });
+        } catch(err) {
+            grid.innerHTML = oldHTML;
+            console.error("Failed to render projects:", err);
+        }
     }, 300);
 }
 
@@ -378,20 +390,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
+        try {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        } catch(e) { console.error("Reveal Error:", e); }
     }, revealOptions);
     revealElements.forEach(el => revealOnScroll.observe(el));
 
     // --- Navbar ---
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
+        try {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        } catch(e) {}
     });
 
     // --- Mobile Menu & Smooth Scroll Routing ---
@@ -447,16 +463,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const scrollSpy = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navItems.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${entry.target.id}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
+        try {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navItems.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        } catch(e) { console.error("ScrollSpy Error:", e); }
     }, spyOptions);
     
     sections.forEach(sec => scrollSpy.observe(sec));
