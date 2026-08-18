@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
 /* ==========================================================================
    CSS Variables & Theming
+
    ========================================================================== */
    :root {
     /* Agency Palette - Elite Dark Mode */
@@ -773,7 +776,7 @@ section, footer {
 .delay-4 { transition-delay: 0.4s; }
 
 /* ==========================================================================
-   Responsive
+   Responsive & Mobile Optimization
    ========================================================================== */
 @media (max-width: 1024px) {
     .work-card:nth-child(n) {
@@ -790,3 +793,88 @@ section, footer {
     * { cursor: auto !important; }
 }
 
+@media (max-width: 768px) {
+    .services-grid, .work-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn, .form-input, .input-group input, .input-group select, .nav-links a {
+        min-height: 44px; /* Strict touch target */
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 10vw, 4rem);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 101;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(3, 3, 3, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 100px 2rem 2rem 2rem;
+        border-bottom: 1px solid var(--border-glass);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ==========================================================================
+   RTL Engine (Arabic)
+   ========================================================================== */
+html[lang="ar"] {
+    font-family: 'Cairo', sans-serif;
+}
+
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, 
+html[lang="ar"] .hero-title, html[lang="ar"] .section-title, html[lang="ar"] .massive-title, html[lang="ar"] .btn {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Auto-mirroring overrides */
+html[dir="rtl"] .hamburger {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+html[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    html[dir="rtl"] .nav-links {
+        flex-direction: column;
+        right: 0;
+        left: auto;
+    }
+}
+
+html[dir="rtl"] .hero-title,
+html[dir="rtl"] .hero-subtitle,
+html[dir="rtl"] .hero-cta {
+    text-align: right;
+}
+
+html[dir="rtl"] .section-header {
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links a:not(.btn)::after {
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+}

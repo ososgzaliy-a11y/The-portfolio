@@ -46,10 +46,11 @@
             </button>
 
             <nav class="nav-links">
-                <a href="#services" class="magnetic" data-strength="15">Services</a>
-                <a href="#work" class="magnetic" data-strength="15">Work</a>
-                <a href="#reviews" class="magnetic" data-strength="15">Testimonials</a>
-                <a href="#contact" class="btn btn-nav magnetic" data-strength="30">Let's Talk</a>
+                <a href="#services" class="magnetic" data-strength="15" data-i18n="nav_services">Services</a>
+                <a href="#work" class="magnetic" data-strength="15" data-i18n="nav_work">Work</a>
+                <a href="#reviews" class="magnetic" data-strength="15" data-i18n="nav_testimonials">Testimonials</a>
+                <button id="langToggle" class="btn btn-nav magnetic" data-strength="15">AR</button>
+                <a href="#contact" class="btn btn-nav magnetic" data-strength="30" data-i18n="nav_lets_talk">Let's Talk</a>
             </nav>
         </div>
     </header>
@@ -60,23 +61,23 @@
 
             <!-- Hero Section (CRO Hook) -->
             <section id="hero" class="hero container reveal-on-scroll">
-                <h1 class="hero-title">
+                <h1 class="hero-title" data-i18n="hero_title">
                     We Engineer Digital<br>
                     <span class="accent-text">Experiences</span><br>
                     That Scale.
                 </h1>
-                <p class="hero-subtitle">We are an elite digital agency partnering with ambitious brands to build high-converting, Awwwards-tier web and mobile applications.</p>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">We are an elite digital agency partnering with ambitious brands to build high-converting, Awwwards-tier web and mobile applications.</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary btn-glow magnetic" data-strength="50">Start a Project</a>
-                    <a href="#work" class="btn btn-secondary magnetic" data-strength="30">View Our Work</a>
+                    <a href="#contact" class="btn btn-primary btn-glow magnetic" data-strength="50" data-i18n="hero_cta_start">Start a Project</a>
+                    <a href="#work" class="btn btn-secondary magnetic" data-strength="30" data-i18n="hero_cta_view">View Our Work</a>
                 </div>
             </section>
 
             <!-- Services Section -->
             <section id="services" class="services-section container">
                 <div class="section-header reveal-on-scroll">
-                    <h2 class="section-title">Core Expertise</h2>
-                    <p class="section-desc">End-to-end digital product development engineered for maximum impact.</p>
+                    <h2 class="section-title" data-i18n="services_title">Core Expertise</h2>
+                    <p class="section-desc" data-i18n="services_desc">End-to-end digital product development engineered for maximum impact.</p>
                 </div>
                 <!-- Injected via script.js -->
                 <div class="services-grid" id="servicesGrid"></div>
@@ -85,8 +86,8 @@
             <!-- Live Works Showcase -->
             <section id="work" class="work-showcase container">
                 <div class="section-header reveal-on-scroll">
-                    <h2 class="section-title">Selected Works</h2>
-                    <p class="section-desc">Proof of our capability to deliver world-class digital solutions.</p>
+                    <h2 class="section-title" data-i18n="work_title">Selected Works</h2>
+                    <p class="section-desc" data-i18n="work_desc">Proof of our capability to deliver world-class digital solutions.</p>
                 </div>
                 <!-- Injected via script.js -->
                 <div class="work-grid" id="portfolioGrid"></div>
@@ -95,7 +96,7 @@
             <!-- Social Proof / Testimonials -->
             <section id="reviews" class="reviews-section">
                 <div class="container reveal-on-scroll">
-                    <h2 class="section-title">Client Trust</h2>
+                    <h2 class="section-title" data-i18n="reviews_title">Client Trust</h2>
                 </div>
                 <div class="marquee-container testimonial-marquee">
                     <!-- Injected via script.js -->
@@ -109,8 +110,8 @@
             <footer id="contact" class="footer-section">
                 <div class="container footer-grid reveal-on-scroll">
                     <div class="contact-info">
-                        <h2 class="massive-title">Ready to<br><span class="accent-text">Scale?</span></h2>
-                        <p class="contact-subtext">Drop us a line and let's engineer something extraordinary together.</p>
+                        <h2 class="massive-title" data-i18n="footer_title">Ready to<br><span class="accent-text">Scale?</span></h2>
+                        <p class="contact-subtext" data-i18n="footer_subtitle">Drop us a line and let's engineer something extraordinary together.</p>
                         
                         <div class="social-links">
                             <a href="#" class="magnetic" data-strength="30" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
@@ -123,37 +124,37 @@
                         <div class="form-row">
                             <div class="input-group">
                                 <input type="text" id="name" name="name" required placeholder=" " />
-                                <label for="name">Name</label>
+                                <label for="name" data-i18n="form_name">Name</label>
                             </div>
                             <div class="input-group">
                                 <input type="email" id="email" name="email" required placeholder=" " />
-                                <label for="email">Work Email</label>
+                                <label for="email" data-i18n="form_email">Work Email</label>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="input-group">
                                 <input type="text" id="company" name="company" required placeholder=" " />
-                                <label for="company">Company</label>
+                                <label for="company" data-i18n="form_company">Company</label>
                             </div>
                             <div class="input-group select-group">
                                 <select id="budget" name="budget" required>
-                                    <option value="" disabled selected hidden>Project Budget</option>
-                                    <option value="10k-25k">$10k - $25k</option>
-                                    <option value="25k-50k">$25k - $50k</option>
-                                    <option value="50k-100k">$50k - $100k</option>
-                                    <option value="100k+">$100k+</option>
+                                    <option value="" disabled selected hidden data-i18n="form_budget">Project Budget</option>
+                                    <option value="10k-25k" data-i18n="form_budget_1">$10k - $25k</option>
+                                    <option value="25k-50k" data-i18n="form_budget_2">$25k - $50k</option>
+                                    <option value="50k-100k" data-i18n="form_budget_3">$50k - $100k</option>
+                                    <option value="100k+" data-i18n="form_budget_4">$100k+</option>
                                 </select>
                             </div>
                         </div>
                         <div class="input-group">
                             <textarea id="message" name="message" rows="3" required placeholder=" "></textarea>
-                            <label for="message">Project Details</label>
+                            <label for="message" data-i18n="form_message">Project Details</label>
                         </div>
-                        <button type="submit" class="btn btn-primary submit-btn magnetic" data-strength="40">Submit Inquiry</button>
+                        <button type="submit" class="btn btn-primary submit-btn magnetic" data-strength="40" data-i18n="form_submit">Submit Inquiry</button>
                     </form>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2026 AGENCY. Engineered with precision.</p>
+                    <p data-i18n="footer_copyright">&copy; 2026 AGENCY. Engineered with precision.</p>
                 </div>
             </footer>
         </div>
@@ -169,7 +170,7 @@
                     <span class="control-dot min-dot"></span>
                     <span class="control-dot max-dot"></span>
                 </div>
-                <h3 class="modal-title" id="modalTitle">Live Client Work</h3>
+                <h3 class="modal-title" id="modalTitle" data-i18n="modal_title">Live Client Work</h3>
                 <button class="btn-close-modal magnetic" data-strength="30" aria-label="Close Modal">&times;</button>
             </header>
             <div class="iframe-container">
