@@ -138,42 +138,81 @@ function setLanguage(lang) {
 function renderServices() {
     const grid = document.getElementById('servicesGrid');
     if (!grid) return;
-    let html = '';
-    translations[currentLang].agencyServices.forEach((service, index) => {
-        const delayClass = `delay-${(index % 4) + 1}`;
-        html += `
-            <div class="service-card reveal-on-scroll ${delayClass}">
-                <div class="service-icon">${service.icon}</div>
-                <h3 class="service-title">${service.title}</h3>
-                <p class="service-desc">${service.desc}</p>
-                <div class="service-tech">${service.tech}</div>
-            </div>
-        `;
-    });
-    grid.innerHTML = html;
+    grid.innerHTML = '<div class="loader" style="margin: 0 auto; padding: 2rem;"></div>';
+    
+    setTimeout(() => {
+        let html = '';
+        translations[currentLang].agencyServices.forEach((service, index) => {
+            const delayClass = `delay-${(index % 4) + 1}`;
+            html += `
+                <div class="service-card reveal-on-scroll ${delayClass}">
+                    <div class="service-icon">${service.icon}</div>
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-desc">${service.desc}</p>
+                    <div class="service-tech">${service.tech}</div>
+                </div>
+            `;
+        });
+        grid.innerHTML = html;
+    }, 300);
 }
 
 function renderProjects() {
     const grid = document.getElementById('portfolioGrid');
     if (!grid) return;
-    let html = '';
-    translations[currentLang].clientProjects.forEach((project, index) => {
-        const delayClass = `delay-${(index % 4) + 1}`;
-        html += `
-            <article class="work-card reveal-on-scroll ${delayClass}">
-                <div class="card-image-wrapper cursor-trigger" data-cursor="View" data-url="${project.liveUrl}" data-title="${project.title}">
-                    <img src="${project.image}" alt="${project.title}" class="project-img">
-                </div>
-                <div class="card-info">
-                    <div>
-                        <h3 class="card-title">${project.title}</h3>
-                        <p class="card-tech">${project.client} &nbsp;•&nbsp; ${project.tech}</p>
+    grid.innerHTML = '<div class="loader" style="margin: 0 auto; padding: 2rem;"></div>';
+    
+    setTimeout(() => {
+        let html = '';
+        translations[currentLang].clientProjects.forEach((project, index) => {
+            const delayClass = `delay-${(index % 4) + 1}`;
+            html += `
+                <article class="work-card reveal-on-scroll ${delayClass}">
+                    <div class="card-image-wrapper cursor-trigger" data-cursor="View" data-url="${project.liveUrl}" data-title="${project.title}">
+                        <img src="${project.image}" alt="${project.title}" class="project-img">
                     </div>
-                </div>
-            </article>
-        `;
-    });
-    grid.innerHTML = html;
+                    <div class="card-info">
+                        <div>
+                            <h3 class="card-title">${project.title}</h3>
+                            <p class="card-tech">${project.client} &nbsp;•&nbsp; ${project.tech}</p>
+                        </div>
+                    </div>
+                </article>
+            `;
+        });
+        grid.innerHTML = html;
+
+        // Re-bind click listeners for the newly injected cards
+        document.querySelectorAll('.card-image-wrapper').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = trigger.getAttribute('data-url');
+                const title = trigger.getAttribute('data-title');
+                if(url) {
+                    const iframe = document.getElementById('liveIframe');
+                    const modal = document.getElementById('liveModal');
+                    iframe.src = url;
+                    document.getElementById('modalTitle').textContent = title + " - Live Client Work";
+                    modal.classList.add('active');
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                    if (typeof lenis !== 'undefined') lenis.stop();
+                }
+            });
+            // Re-bind cursor triggers for new cards
+            trigger.addEventListener('mouseenter', () => {
+                const cursor = document.querySelector('.custom-cursor');
+                if(cursor) {
+                    cursor.classList.add('hover-active');
+                    cursor.querySelector('.cursor-text').textContent = trigger.getAttribute('data-cursor') || 'View';
+                }
+            });
+            trigger.addEventListener('mouseleave', () => {
+                const cursor = document.querySelector('.custom-cursor');
+                if(cursor) cursor.classList.remove('hover-active');
+            });
+        });
+    }, 300);
 }
 
 function renderTestimonials() {
@@ -355,20 +394,42 @@ document.addEventListener('DOMContentLoaded', () => {
         else navbar.classList.remove('scrolled');
     });
 
-    // --- Mobile Menu ---
+    // --- SPA Routing & Mobile Menu ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        navLinks.classList.contains('active') ? lenis.stop() : lenis.start();
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                lenis.start();
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            if (typeof lenis !== 'undefined') {
+                navLinks.classList.contains('active') ? lenis.stop() : lenis.start();
+            }
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                // SPA Routing Logic
+                document.querySelectorAll('section, footer').forEach(sec => sec.classList.remove('active-section'));
+                targetSection.classList.add('active-section');
+                
+                // Reset scroll
+                window.scrollTo({ top: 0 });
+                if (typeof lenis !== 'undefined') lenis.scrollTo(0, { immediate: true });
+                
+                // Close mobile menu if open
+                if (navLinks && navLinks.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    if (typeof lenis !== 'undefined') lenis.start();
+                }
             }
         });
     });
@@ -382,13 +443,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modalTitle').textContent = title + " - Live Client Work";
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
-        lenis.stop();
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        if (typeof lenis !== 'undefined') lenis.stop();
     }
     
     function closeModal() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
-        lenis.start();
+        document.body.style.overflow = ''; // Restore scrolling
+        if (typeof lenis !== 'undefined') lenis.start();
         setTimeout(() => iframe.src = '', 600);
     }
 
