@@ -6,7 +6,7 @@ echo.
 
 "C:\Program Files\Git\cmd\git.exe" add .
 "C:\Program Files\Git\cmd\git.exe" commit -m "Auto-update: live changes"
-"C:\Program Files\Git\cmd\git.exe" push -u origin main
+"C:\Program Files\Git\cmd\git.exe" push -u origin main --force
 
 echo.
 echo ========================================================
