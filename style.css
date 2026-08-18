@@ -924,3 +924,19 @@ html[dir="rtl"] .nav-links a:not(.btn)::after {
     left: auto;
     transform: translateX(50%);
 }
+
+/* ==========================================================================
+   Visibility Fallbacks & Bug Fixes
+   ========================================================================== */
+.work-card, .project-card, .service-card, .reveal-on-scroll {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+}
+
+/* Ensure hover states handle interaction, not baseline visibility */
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+}
