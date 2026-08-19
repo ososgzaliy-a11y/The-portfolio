@@ -323,6 +323,21 @@ section:nth-child(even) {
     backdrop-filter: blur(10px);
 }
 
+#langToggle {
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+#langToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
 .magnetic {
     display: inline-block;
     will-change: transform;
@@ -818,6 +833,28 @@ section:nth-child(even) {
 @media (max-width: 768px) {
     .services-grid, .work-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .testimonial-marquee {
+        width: 100%;
+        flex-direction: column;
+        animation: none;
+        padding: 0;
+    }
+
+    .marquee-content {
+        width: 100%;
+        flex-direction: column;
+        padding-left: 0;
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        width: 100%;
+    }
+
+    #testimonialsContent2 {
+        display: none;
     }
     
     .btn, .form-input, .input-group input, .input-group select, .nav-links a {
