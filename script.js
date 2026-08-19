@@ -16,6 +16,13 @@ const translations = {
         services_desc: "End-to-end digital product development engineered for maximum impact.",
         work_title: "Selected Works",
         work_desc: "Proof of our capability to deliver world-class digital solutions.",
+        work_view_all: "View All Works",
+        filter_latest: "Latest",
+        empty_category: "No projects in this category yet.",
+        filter_ecommerce: "E-Commerce",
+        filter_landing: "Landing Pages",
+        filter_dashboards: "Dashboards & Systems",
+        filter_ai: "AI & Automation",
         reviews_title: "Client Trust",
         footer_title: "Ready to<br><span class=\"accent-text\">Scale?</span>",
         footer_subtitle: "Drop us a line and let's engineer something extraordinary together.",
@@ -39,10 +46,10 @@ const translations = {
             { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>`, title: "Cloud Architecture", desc: "Robust backend systems deployed on modern serverless or microservice infrastructures.", tech: "AWS • Docker • Kubernetes" }
         ],
         clientProjects: [
-            { title: "Fintech Dashboard", client: "StripeX", tech: "React • TypeScript • D3.js", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo1" },
-            { title: "E-Commerce Platform", client: "Aura Fashion", tech: "Next.js • GraphQL • Tailwind", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo2" },
-            { title: "AI Marketing Tool", client: "CopyGenius", tech: "Vue 3 • OpenAI • Node.js", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo3" },
-            { title: "Web3 Wallet", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
+            { category: "dashboards", title: "Fintech Dashboard", client: "StripeX", tech: "React • TypeScript • D3.js", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo1" },
+            { category: "ecommerce", title: "E-Commerce Platform", client: "Aura Fashion", tech: "Next.js • GraphQL • Tailwind", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo2" },
+            { category: "ai", title: "AI Marketing Tool", client: "CopyGenius", tech: "Vue 3 • OpenAI • Node.js", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo3" },
+            { category: "landing", title: "Web3 Wallet", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
         ],
         clientReviews: [
             { quote: "01 Group completely transformed our digital presence. Our conversion rates increased by 150% within the first month of launch.", name: "Sarah Jenkins", company: "CMO, StripeX" },
@@ -64,6 +71,13 @@ const translations = {
         services_desc: "تطوير شامل للمنتجات الرقمية مصمم لتحقيق أقصى تأثير.",
         work_title: "أعمال مختارة",
         work_desc: "دليل على قدرتنا على تقديم حلول رقمية عالمية المستوى.",
+        work_view_all: "عرض جميع الأعمال",
+        filter_latest: "أحدث الأعمال",
+        empty_category: "لا توجد مشاريع في هذا القسم بعد.",
+        filter_ecommerce: "المتاجر الإلكترونية",
+        filter_landing: "الصفحات التعريفية",
+        filter_dashboards: "الأنظمة الداخلية واللوحات",
+        filter_ai: "أدوات الذكاء الاصطناعي",
         reviews_title: "ثقة العملاء",
         footer_title: "مستعد<br><span class=\"accent-text\">للتوسع؟</span>",
         footer_subtitle: "تواصل معنا ودعنا نصمم شيئًا استثنائيًا معًا.",
@@ -87,10 +101,10 @@ const translations = {
             { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>`, title: "البنية التحتية السحابية", desc: "أنظمة خلفية قوية مبنية على خوادم حديثة بدون خادم.", tech: "AWS • Docker • Kubernetes" }
         ],
         clientProjects: [
-            { title: "لوحة تحكم التكنولوجيا المالية", client: "StripeX", tech: "React • TypeScript • D3.js", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo1" },
-            { title: "منصة تجارة إلكترونية", client: "Aura Fashion", tech: "Next.js • GraphQL • Tailwind", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo2" },
-            { title: "أداة تسويق بالذكاء الاصطناعي", client: "CopyGenius", tech: "Vue 3 • OpenAI • Node.js", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo3" },
-            { title: "محفظة ويب 3", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
+            { category: "dashboards", title: "لوحة تحكم التكنولوجيا المالية", client: "StripeX", tech: "React • TypeScript • D3.js", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo1" },
+            { category: "ecommerce", title: "منصة تجارة إلكترونية", client: "Aura Fashion", tech: "Next.js • GraphQL • Tailwind", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo2" },
+            { category: "ai", title: "أداة تسويق بالذكاء الاصطناعي", client: "CopyGenius", tech: "Vue 3 • OpenAI • Node.js", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo3" },
+            { category: "landing", title: "محفظة ويب 3", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
         ],
         clientReviews: [
             { quote: "قامت 01 Group بتحويل حضورنا الرقمي بالكامل. زادت معدلات التحويل لدينا بنسبة 150٪ في غضون الشهر الأول.", name: "سارة جينكينز", company: "StripeX" },
@@ -168,17 +182,18 @@ function renderServices() {
     }
 }
 
+// Filter state initialized in DOMContentLoaded
+
 function renderProjects() {
     const grid = document.getElementById('portfolioGrid');
     if (!grid) return;
-    const oldHTML = grid.innerHTML;
     
     try {
         let html = '';
         translations[currentLang].clientProjects.forEach((project, index) => {
             const delayClass = `delay-${(index % 4) + 1}`;
             html += `
-                <article class="work-card reveal-on-scroll ${delayClass}">
+                <article class="work-card reveal-on-scroll ${delayClass}" data-category="${project.category}">
                     <div class="card-image-wrapper cursor-trigger" data-cursor="View" data-url="${project.liveUrl}" data-title="${project.title}">
                         <img src="${project.image}" alt="${project.title}" class="project-img">
                     </div>
@@ -192,6 +207,12 @@ function renderProjects() {
             `;
         });
         grid.innerHTML = html;
+
+        // Force a small reflow and re-trigger reveal animations for newly injected cards
+        setTimeout(() => {
+            document.querySelectorAll('.work-card').forEach(card => card.classList.add('is-visible'));
+            applyFilter(window.currentFilter); // Ensure current filter is applied
+        }, 50);
 
         // Re-bind click listeners for the newly injected cards
         document.querySelectorAll('.card-image-wrapper').forEach(trigger => {
@@ -253,6 +274,10 @@ function renderTestimonials() {
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Determine initial filter based on active button
+    const activeBtn = document.querySelector('.filter-btn.active');
+    window.currentFilter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+
     // Render all dynamic sections first
     renderServices();
     renderProjects();
@@ -318,27 +343,29 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseY = e.clientY;
         root.style.setProperty('--mouse-x', `${mouseX}px`);
         root.style.setProperty('--mouse-y', `${mouseY}px`);
-        cursor.style.opacity = '1';
+        if(cursor) cursor.style.opacity = '1';
     });
 
     // Fix cursor travelling bug on window edge crossing
     document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
+        if(cursor) cursor.style.opacity = '0';
     });
     document.addEventListener('mouseenter', (e) => {
         mouseX = e.clientX; mouseY = e.clientY;
         cursorX = mouseX; cursorY = mouseY;
-        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-        cursor.style.opacity = '1';
+        if(cursor) {
+            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+            cursor.style.opacity = '1';
+        }
     });
 
     const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
     function renderCursor() {
-        if (window.innerWidth > 1024) {
+        if (cursor && window.innerWidth > 1024) {
             cursorX = lerp(cursorX, mouseX, 0.2);
             cursorY = lerp(cursorY, mouseY, 0.2);
-            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
         }
         requestAnimationFrame(renderCursor);
     }
@@ -349,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cursorTriggers.forEach(trigger => {
         trigger.addEventListener('mouseenter', () => {
             const contextText = trigger.getAttribute('data-cursor');
-            cursorText.textContent = contextText;
+            if (cursorText) cursorText.textContent = contextText;
             cursor.classList.add('hover-active');
         });
         trigger.addEventListener('mouseleave', () => {
@@ -566,5 +593,71 @@ document.addEventListener('DOMContentLoaded', () => {
             setLanguage(newLang);
         });
     }
+
+    // --- Portfolio Filter Logic ---
+    function applyFilter(filterValue) {
+        const grid = document.getElementById('portfolioGrid');
+        if (!grid) return;
+        const projects = grid.querySelectorAll('.work-card');
+        
+        // Remove existing empty state if any
+        const existingEmpty = grid.querySelector('.empty-state');
+        if (existingEmpty) existingEmpty.remove();
+
+        let displayedCount = 0;
+
+        projects.forEach(project => {
+            let shouldShow = false;
+            
+            if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
+                shouldShow = true;
+            }
+
+            if (shouldShow) {
+                project.style.display = 'block';
+                displayedCount++;
+                // Small delay to allow display block to take effect before animating opacity
+                setTimeout(() => {
+                    project.style.opacity = '1';
+                    project.style.transform = 'translateZ(0) scale(1)';
+                }, 10);
+            } else {
+                project.style.opacity = '0';
+                project.style.transform = 'translateZ(0) scale(0.95)';
+                setTimeout(() => {
+                    project.style.display = 'none';
+                }, 400); // Matches CSS transition duration
+            }
+        });
+
+        // Handle Empty State
+        if (displayedCount === 0) {
+            const emptyState = document.createElement('div');
+            emptyState.className = 'empty-state';
+            emptyState.style.gridColumn = '1 / -1';
+            emptyState.style.textAlign = 'center';
+            emptyState.style.padding = '4rem 0';
+            emptyState.style.color = 'var(--text-secondary)';
+            emptyState.style.fontSize = '1.2rem';
+            emptyState.innerText = translations[currentLang].empty_category;
+            grid.appendChild(emptyState);
+        }
+    }
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Remove active from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active to clicked
+            e.target.classList.add('active');
+            
+            // Update global filter
+            window.currentFilter = e.target.getAttribute('data-filter');
+            
+            // Apply filtering logic directly to DOM elements
+            applyFilter(window.currentFilter);
+        });
+    });
 
 });

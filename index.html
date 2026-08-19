@@ -22,15 +22,11 @@
 </head>
 <body class="dark-theme">
 
-    <!-- Page Load Animation Overlay -->
-    <div class="loader-overlay">
-        <div class="loader-text">Loading Experience...</div>
-    </div>
-
     <!-- Contextual Custom Cursor -->
     <div class="custom-cursor">
         <span class="cursor-text">View</span>
     </div>
+
 
     <!-- Mouse Tracking Glow Background -->
     <div class="glow-bg"></div>
@@ -38,9 +34,12 @@
     <!-- Navigation -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="#hero" class="brand-logo magnetic" data-strength="20"><img src="logo.png" alt="01 Group Digital Solutions"></a>
+            <a href="#hero" class="brand-logo-text magnetic" data-strength="20">
+                <span class="brand-name">01</span> <span class="brand-group">Group</span>
+            </a>
             
             <button class="hamburger magnetic" aria-label="Toggle Navigation" data-strength="20">
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
@@ -89,8 +88,19 @@
                     <h2 class="section-title" data-i18n="work_title">Selected Works</h2>
                     <p class="section-desc" data-i18n="work_desc">Proof of our capability to deliver world-class digital solutions.</p>
                 </div>
+                
+                <!-- Category Filters (Injected via script.js for i18n support or hardcoded with i18n tags) -->
+                <div class="portfolio-filters reveal-on-scroll delay-1">
+                    <button class="filter-btn active magnetic" data-filter="all" data-strength="15" data-i18n="filter_all">All</button>
+                    <button class="filter-btn magnetic" data-filter="ecommerce" data-strength="15" data-i18n="filter_ecommerce">E-Commerce</button>
+                    <button class="filter-btn magnetic" data-filter="landing" data-strength="15" data-i18n="filter_landing">Landing Pages</button>
+                    <button class="filter-btn magnetic" data-filter="dashboards" data-strength="15" data-i18n="filter_dashboards">Dashboards & Systems</button>
+                    <button class="filter-btn magnetic" data-filter="ai" data-strength="15" data-i18n="filter_ai">AI & Automation</button>
+                </div>
                 <!-- Injected via script.js -->
                 <div class="work-grid" id="portfolioGrid"></div>
+
+
             </section>
 
             <!-- Social Proof / Testimonials -->
@@ -179,5 +189,12 @@
         </div>
     </div>
 
+    <!-- Custom Cursor & Glow -->
+    <div class="custom-cursor"><div class="cursor-text"></div></div>
+    <div class="glow-bg"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
