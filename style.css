@@ -292,6 +292,7 @@ section:nth-child(even) {
     font-weight: 700;
     border-radius: 100px;
     border: 1px solid var(--border-glass);
+    color: var(--text-primary);
     transition: all var(--transition-fast);
 }
 
