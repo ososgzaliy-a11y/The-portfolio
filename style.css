@@ -325,12 +325,14 @@ section:nth-child(even) {
 
 #langToggle {
     color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all var(--transition-fast) !important;
 }
 
 #langToggle:hover {
@@ -836,25 +838,26 @@ section:nth-child(even) {
     }
     
     .testimonial-marquee {
-        width: 100%;
-        flex-direction: column;
-        animation: none;
-        padding: 0;
+        width: 100% !important;
+        flex-direction: column !important;
+        animation: none !important;
+        padding: 0 !important;
     }
 
     .marquee-content {
-        width: 100%;
-        flex-direction: column;
-        padding-left: 0;
-        gap: 20px;
+        width: 100% !important;
+        flex-direction: column !important;
+        padding-left: 0 !important;
+        gap: 20px !important;
     }
 
     .testimonial-card {
-        width: 100%;
+        width: 100% !important;
+        flex: 0 0 100% !important; /* Force cards not to shrink */
     }
 
     #testimonialsContent2 {
-        display: none;
+        display: none !important;
     }
     
     .btn, .form-input, .input-group input, .input-group select, .nav-links a {
