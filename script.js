@@ -425,6 +425,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.classList.contains('active') ? lenis.stop() : lenis.start();
             }
         });
+
+        // Close menu immediately on any link or button click
+        document.querySelectorAll('.nav-links a, .nav-links button').forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                if (typeof lenis !== 'undefined') lenis.start();
+            });
+        });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
