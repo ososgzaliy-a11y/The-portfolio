@@ -833,8 +833,18 @@ section:nth-child(even) {
 }
 
 @media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+    }
+
+    section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
     .services-grid, .work-grid {
         grid-template-columns: 1fr;
+        gap: 24px !important;
     }
     
     .testimonial-marquee {
@@ -861,11 +871,21 @@ section:nth-child(even) {
     }
     
     .btn, .form-input, .input-group input, .input-group select, .nav-links a {
-        min-height: 44px; /* Strict touch target */
+        min-height: 48px !important; /* Strict touch target */
+    }
+
+    .hamburger {
+        min-height: 48px !important;
     }
 
     .hero-title {
-        font-size: clamp(3rem, 10vw, 4rem);
+        font-size: clamp(2rem, 8vw, 4rem) !important;
+        line-height: 1.1 !important;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+        line-height: 1.2 !important;
     }
 
     .hero-cta {
