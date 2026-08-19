@@ -45,10 +45,10 @@ const translations = {
             { title: "Web3 Wallet", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
         ],
         clientReviews: [
-            { quote: "AGENCY completely transformed our digital presence. Our conversion rates increased by 150% within the first month of launch.", name: "Sarah Jenkins", company: "CMO, StripeX" },
+            { quote: "01 Group completely transformed our digital presence. Our conversion rates increased by 150% within the first month of launch.", name: "Sarah Jenkins", company: "CMO, StripeX" },
             { quote: "The technical expertise and attention to motion design is unmatched. They delivered an Awwwards-winning site ahead of schedule.", name: "Michael Chen", company: "Founder, Aura Fashion" },
             { quote: "Their team engineered a highly complex AI backend while keeping the frontend buttery smooth. True world-class professionals.", name: "David Ross", company: "CTO, CopyGenius" },
-            { quote: "Finding an agency that understands both elite UI/UX and hardcore engineering is rare. AGENCY brings both to the table effortlessly.", name: "Elena Rodriguez", company: "VP Product, Nexus" }
+            { quote: "Finding an agency that understands both elite UI/UX and hardcore engineering is rare. 01 Group brings both to the table effortlessly.", name: "Elena Rodriguez", company: "VP Product, Nexus" }
         ]
     },
     ar: {
@@ -77,7 +77,7 @@ const translations = {
         form_budget_4: "$100k+",
         form_message: "تفاصيل المشروع",
         form_submit: "إرسال الطلب",
-        footer_copyright: "&copy; 2026 AGENCY. تم التصميم بدقة.",
+        footer_copyright: "&copy; 2026 01 Group. تم التصميم بدقة.",
         modal_title: "أعمال العملاء الحية",
 
         agencyServices: [
@@ -93,10 +93,10 @@ const translations = {
             { title: "محفظة ويب 3", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
         ],
         clientReviews: [
-            { quote: "قامت الوكالة بتحويل حضورنا الرقمي بالكامل. زادت معدلات التحويل لدينا بنسبة 150٪ في غضون الشهر الأول.", name: "سارة جينكينز", company: "StripeX" },
+            { quote: "قامت 01 Group بتحويل حضورنا الرقمي بالكامل. زادت معدلات التحويل لدينا بنسبة 150٪ في غضون الشهر الأول.", name: "سارة جينكينز", company: "StripeX" },
             { quote: "الخبرة التقنية والاهتمام بتصميم الحركة لا مثيل لهما. لقد قدموا موقعًا حائزًا على جوائز.", name: "مايكل تشين", company: "Aura Fashion" },
             { quote: "قام فريقهم بهندسة نظام خلفي معقد للغاية للذكاء الاصطناعي مع الحفاظ على الواجهة الأمامية سلسة.", name: "ديفيد روس", company: "CopyGenius" },
-            { quote: "العثور على وكالة تفهم كل من تصميم واجهة المستخدم المتميزة والهندسة القوية أمر نادر. إنهم يقدمون كليهما ببراعة.", name: "إيلينا رودريغيز", company: "Nexus" }
+            { quote: "العثور على 01 Group تفهم كل من تصميم واجهة المستخدم المتميزة والهندسة القوية أمر نادر. إنهم يقدمون كليهما ببراعة.", name: "إيلينا رودريغيز", company: "Nexus" }
         ]
     }
 };

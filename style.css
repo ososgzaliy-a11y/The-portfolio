@@ -256,11 +256,19 @@ section:nth-child(even) {
     align-items: center;
 }
 
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: -2px;
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.brand-logo img {
+    max-height: 45px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    will-change: transform;
 }
 
 .nav-links {
@@ -840,6 +848,10 @@ section:nth-child(even) {
     section {
         padding-left: 20px !important;
         padding-right: 20px !important;
+    }
+
+    .brand-logo img {
+        max-height: 35px;
     }
 
     .services-grid, .work-grid {
