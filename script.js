@@ -316,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseY = e.clientY;
         root.style.setProperty('--mouse-x', `${mouseX}px`);
         root.style.setProperty('--mouse-y', `${mouseY}px`);
+        cursor.style.opacity = '1';
     });
 
     // Fix cursor travelling bug on window edge crossing
