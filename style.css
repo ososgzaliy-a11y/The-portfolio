@@ -927,17 +927,33 @@ html[dir="rtl"] .nav-links a:not(.btn)::after {
 }
 
 /* ==========================================================================
-   Visibility Fallbacks & Bug Fixes
+   Visibility Fallbacks & Bug Fixes (Anti-Spinner)
    ========================================================================== */
+
+/* Permanently hide all inline scroll-triggered loaders */
+.loader, .loading-spinner, .spinner {
+    display: none !important;
+}
+
+/* Force baseline visibility and structure for data grids to prevent black gaps */
+#servicesGrid, #portfolioGrid, .testimonial-marquee {
+    opacity: 1 !important;
+    min-height: auto !important;
+    visibility: visible !important;
+}
+
+#servicesGrid { display: grid; }
+#portfolioGrid { display: grid; }
+
 .work-card, .project-card, .service-card, .reveal-on-scroll {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Ensure hover states handle interaction, not baseline visibility */
 .work-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) !important;
     box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
 }
