@@ -1,663 +1,348 @@
-// ==========================================================================
-// 1. Data-Driven Architecture & RTL Translation Engine
-// ==========================================================================
 
 const translations = {
-    en: {
-        nav_services: "Services",
-        nav_work: "Work",
-        nav_testimonials: "Testimonials",
-        nav_lets_talk: "Let's Talk",
-        hero_title: "We Engineer Digital<br><span class=\"accent-text\">Experiences</span><br>That Scale.",
-        hero_subtitle: "We are an elite digital agency partnering with ambitious brands to build high-converting, Awwwards-tier web and mobile applications.",
-        hero_cta_start: "Start a Project",
-        hero_cta_view: "View Our Work",
-        services_title: "Core Expertise",
-        services_desc: "End-to-end digital product development engineered for maximum impact.",
-        work_title: "Selected Works",
-        work_desc: "Proof of our capability to deliver world-class digital solutions.",
-        work_view_all: "View All Works",
-        filter_latest: "Latest",
-        empty_category: "No projects in this category yet.",
-        filter_ecommerce: "E-Commerce",
-        filter_landing: "Landing Pages",
-        filter_dashboards: "Dashboards & Systems",
-        filter_ai: "AI & Automation",
-        reviews_title: "Client Trust",
-        footer_title: "Ready to<br><span class=\"accent-text\">Scale?</span>",
-        footer_subtitle: "Drop us a line and let's engineer something extraordinary together.",
-        form_name: "Name",
-        form_email: "Work Email",
-        form_company: "Company",
-        form_budget: "Project Budget",
-        form_budget_1: "$10k - $25k",
-        form_budget_2: "$25k - $50k",
-        form_budget_3: "$50k - $100k",
-        form_budget_4: "$100k+",
-        form_message: "Project Details",
-        form_submit: "Submit Inquiry",
-        footer_copyright: "&copy; 2026 AGENCY. Engineered with precision.",
-        modal_title: "Live Client Work",
+  ar: {
+    navHome: "الرئيسية",
+    navAbout: "من نحن",
+    navServices: "خدماتنا",
+    navWork: "أعمالنا",
+    ctaProject: "ابدأ مشروعك",
+    heroTitle: "نحن نصمم <span class='text-accent'>تجارب رقمية</span> قابلة للتوسع.",
+    expertiseTitle: "الخبرات <span class='text-accent'>الأساسية</span>",
+    clientTrust: "<span class='text-accent'>ثقة</span> العملاء",
+    ctaScale: "جاهز <span class='text-accent'>للتوسع؟</span>",
+    port1Title: "لوحة تحكم التكنولوجيا المالية",
+    port2Title: "منصة تجارة إلكترونية",
+    port3Title: "تطبيق الذكاء الاصطناعي",
+    port4Title: "نظام إدارة المؤسسات",
+    heroSubtitle: "نحن وكالة رقمية رائدة تتعاون مع العلامات التجارية الطموحة لبناء تطبيقات وب ومواقع عالية التحويل.",
+    ctaWork: "شاهد أعمالنا",
+    stat1: "مشروع منجز",
+    stat2: "نمو العملاء",
+    stat3: "جائزة صناعية",
+    
+    viewAllServices: "عرض كل الخدمات",
+    worksTitle: "أعمالنا المختارة",
+    worksSubtitle: "دليل على قدرتنا على تقديم حلول رقمية عالمية المستوى.",
+    viewAllWorks: "عرض كل الأعمال",
+    
+    
+    footerSubtitle: "تواصل معنا لنبني شيئاً استثنائياً معاً.",
+    formName: "الاسم",
+    formEmail: "البريد الإلكتروني",
+    formCompany: "الشركة",
+    formProjectType: "نوع المشروع",
+    formOptWeb: "تطبيق ويب للمؤسسات",
+    formOptMobile: "تطبيق جوال",
+    formOptEcommerce: "متاجر إلكترونية",
+    formOptAi: "الذكاء الاصطناعي",
+    formOptOther: "أخرى",
+    formMessage: "تفاصيل المشروع",
+    formSubmit: "إرسال الطلب",
+    aboutHistory: "تاريخنا",
+    aboutStory: "القصة",
+    aboutP1: "تأسست مجموعة 01 بواسطة نخبة من المهندسين والمصممين، وبدأت بمهمة واحدة: القضاء على الفجوة بين التصميم الجميل والأداء التقني القوي. لقد قضينا سنوات في إتقان عملنا وتقديم منصات قابلة للتوسع للمؤسسات والشركات الناشئة.",
+    aboutP2: "نحن نرفض تقديم أي شيء أقل من المثالية. كل بكسل له غرض، وكل سطر من الكود مُحسّن لأقصى أداء.",
+    aboutTeam: "فريق العمل",
+    aboutP3: "نحن فريق من كبار المتخصصين. من مهندسي سحابة سابقين في كبرى الشركات إلى مصممي حركة معترف بهم عالمياً، لا نقوم بالاستعانة بمصادر خارجية، بل نبني كل شيء داخلياً بدقة متناهية.",
+    coreValues: "قيمنا الأساسية",
+    val1: "جودة لا تقبل المساومة",
+    val2: "كفاءة عالية",
+    val2Desc: "الوقت هو العملة الأهم. نحن نستخدم أحدث أطر العمل لتسليم المشاريع بشكل أسرع من الوكالات التقليدية.",
+    val3: "شراكة حقيقية",
+    val3Desc: "نحن لا نتصرف كمجرد موردين؛ بل كشركاء تقنيين لك. نندمج في أهداف عملك لضمان النجاح المشترك.",
+    val4: "ابتكار مستمر",
+    val4Desc: "المشهد الرقمي يتطور يومياً. نحن نتبنى ونتقن باستمرار أحدث التقنيات حتى لا يبدو منتجك قديماً أبداً.",
+    portDashboards: "لوحات تحكم وأنظمة",
+    portLanding: "صفحات هبوط",
+    portAll: "الكل",
+    portScale: "توسع",
+    portSubtitle: "استكشف دراسات الحالة المميزة لدينا.",
+    servicesHeroTitle: "خبراتنا وحلولنا الرقمية",
+    servicesHeroSubtitle: "تفاصيل عن خدماتنا الرقمية العالمية.",
+    contactWhatsapp: "راسلنا عبر الواتساب",
+    contactPhone: "اتصل بنا",
+    contactTitle: "لنأخذ عملك إلى العصر الرقمي.",
+    contactSubtitle: "سواء كنت بحاجة لنظام مؤسسي، أو متجر إلكتروني يحقق مبيعات ضخمة، نحن هنا لبناء نجاحك.",
+    cursorText: "عرض",
+    cursorDetails: "التفاصيل",
+    
+    srvcWebTitle: "تطبيقات ومنصات الويب المتطورة",
+    srvcWebDesc: "منصات وإدارات ويب متكاملة، فائقة السرعة، مصممة خصيصاً لتناسب حجم أعمالك وتتحمل ملايين الزوار.",
+    srvcWebTagline: "تطبيقات ومنصات الويب - مشروعك يكبر بدون حدود.",
+    srvcWebProp: "لو البزنس بتاعك بيكبر ومحتاج سيستم يربط كل حاجة ببعضها (مبيعات، مخازن، عملاء) من غير ما يقع أو يعلق، إحنا بنبني لك منصة تفصيل على مقاسك. مش مجرد موقع عادي، ده 'عقل إلكتروني' بيوفر وقتك ومجهودك ويزيد من ثقة عملائك واعتمادهم عليك.",
+    srvcMobileTitle: "تطبيقات الهواتف الذكية (iOS & Android)",
+    srvcMobileDesc: "تطبيقات موبايل احترافية توفر تجربة سريعة ومباشرة لعملائك على جميع أجهزة الآيفون والأندرويد.",
+    srvcMobileTagline: "تطبيقات الموبايل - مشروعك في جيب كل عميل.",
+    srvcMobileProp: "إحنا بنعمل لك تطبيق يشتغل على الآيفون والأندرويد بنعومة وسرعة. تطبيق يخلي تجربة الشراء أو طلب الخدمة أسهل ما يمكن، وده بيترجم لمبيعات أكتر وارتباط أقوى بين العميل وعلامتك التجارية.",
+    srvcUiTitle: "تصميم الواجهات وتجربة المستخدم",
+    srvcUiDesc: "واجهات جذابة وعصرية تمنح عملائك سهولة في التصفح وتحول الزوار إلى عملاء دائمين.",
+    srvcUiTagline: "تصميمات بتخطف العين وتوجه العميل إنه يشتري فوراً.",
+    srvcUiProp: "التصميم مش بس شكل حلو، التصميم هو إزاي تخلي العميل يثق فيك ويلاقي اللي بيدور عليه بسهولة. إحنا بنرسم رحلة العميل خطوة بخطوة عشان نوصله للزرار اللي بيقول 'اشتري الآن' أو 'اتصل بنا' بأشيك وأسهل طريقة، بدون تشتيت.",
+    srvcCloudTitle: "البنية التحتية والسيرفرات السحابية",
+    srvcCloudDesc: "سيرفرات سحابية قوية ومؤمنة تضمن استقرار موقعك وتطبيقه يعمل 24/7 بدون انقطاع.",
+    srvcCloudTagline: "سيرفرات قوية، سريعة، ومبتوقعش مهما كان الضغط.",
+    srvcCloudProp: "مفيش حاجة بتخسر العميل قد إن الموقع يقع أو يكون بطيء. إحنا بننقل شغلك على سيرفرات سحابية قوية جداً. يعني لو فجأة جالك آلاف الزوار بسبب إعلان، موقعك هيفضل شغال، مما ينقذ مبيعاتك ويحافظ على سمعة مشروعك.",
+    
+    featWeb1: "كود مخصص 100%", featWeb2: "لوحة تحكم عربية سهلة", featWeb3: "يتحمل ضغط الزيارات", featWeb4: "حماية فائقة للبيانات",
+    benWeb1: "الوصول لعملائك عبر منصة متكاملة.", benWeb2: "تحكم كامل في جميع عمليات البيع.", benWeb3: "استجابة سريعة جداً للمستخدمين.",
+    featMob1: "Native & Cross-Platform", featMob2: "واجهات جذابة ومريحة", featMob3: "إشعارات ذكية", featMob4: "أداء فائق السرعة",
+    benMob1: "الوصول لعملائك بإشعارات مباشرة.", benMob2: "دعم كامل للآيفون والأندرويد.", benMob3: "سرعة استجابة فائقة.",
+    featUi1: "دراسة سلوك العميل", featUi2: "حركة (Animations) سلسة", featUi3: "بروتوتايب تفاعلي", featUi4: "هوية بصرية فاخرة",
+    benUi1: "بناء ثقة فورية مع الزائر.", benUi2: "توجيه العميل لاتخاذ قرار الشراء.", benUi3: "تصميم حصري يعكس فخامة علامتك.",
+    featCl1: "تحميل خيالي السرعة", featCl2: "استقرار 99.99%", featCl3: "تأمين ضد الهجمات", featCl4: "توسع تلقائي",
+    benCl1: "استقرار الموقع حتى وقت الذروة.", benCl2: "حماية بيانات عملائك بأعلى المعايير.", benCl3: "سرعة تصفح ترفع من تقييمك في محركات البحث.",
+    benefitsTitle: "أهم الفوائد لك", valueTitle: "ماذا تستفيد من هذه الخدمة؟", ctaBtn: "اطلب هذه الخدمة الآن"
+  },
+  en: {
+    navHome: "Home",
+    navAbout: "About Us",
+    navServices: "Services",
+    navWork: "Work",
+    ctaProject: "Let's Talk",
+    heroTitle: "We Engineer <span class='text-accent'>Digital Experiences</span> That Scale.",
+    expertiseTitle: "Core <span class='text-accent'>Expertise</span>",
+    clientTrust: "Client <span class='text-accent'>Trust</span>",
+    ctaScale: "Ready to <span class='text-accent'>Scale?</span>",
+    port1Title: "Fintech Dashboard",
+    port2Title: "E-Commerce Platform",
+    port3Title: "AI SaaS Application",
+    port4Title: "Enterprise ERP System",
+    heroSubtitle: "We are an elite digital agency partnering with ambitious brands to build high-converting web and mobile applications.",
+    ctaWork: "View Our Work",
+    stat1: "Projects Delivered",
+    stat2: "Client Growth",
+    stat3: "Industry Awards",
+    
+    viewAllServices: "View All Services",
+    worksTitle: "Selected Works",
+    worksSubtitle: "Proof of our capability to deliver world-class digital solutions.",
+    viewAllWorks: "View All Works",
+    
+    
+    footerSubtitle: "Drop us a line and let's engineer something extraordinary together.",
+    formName: "Name",
+    formEmail: "Work Email",
+    formCompany: "Company",
+    formProjectType: "Project Type",
+    formOptWeb: "Enterprise Web App",
+    formOptMobile: "Mobile App (iOS/Android)",
+    formOptEcommerce: "E-Commerce",
+    formOptAi: "AI & Automation",
+    formOptOther: "Other",
+    formMessage: "Project Details",
+    formSubmit: "Submit Inquiry",
+    aboutHistory: "Our History",
+    aboutStory: "The Story",
+    aboutP1: "Founded by a collective of elite software engineers and award-winning designers, 01 Group started with a single mission: to eliminate the gap between beautiful aesthetics and hardcore technical performance. We have spent years perfecting our craft, delivering scalable platforms for enterprises and ambitious startups alike.",
+    aboutP2: "We refuse to ship anything less than perfect. Every pixel is intentional, and every line of code is optimized for maximum performance.",
+    aboutTeam: "The Team",
+    aboutP3: "We are a boutique team of senior specialists. From ex-FAANG cloud architects to Awwwards-recognized motion designers, every member of 01 Group is a master of their domain. We don't outsource. We build everything in-house with relentless precision.",
+    coreValues: "Our Core Values",
+    val1: "Uncompromising Quality",
+    val2: "Ruthless Efficiency",
+    val2Desc: "Time is the ultimate currency. We utilize the most advanced frameworks and deployment pipelines to deliver faster than traditional agencies.",
+    val3: "True Partnership",
+    val3Desc: "We don't just act as vendors; we act as your technical co-founders. We immerse ourselves in your business goals to ensure mutual success.",
+    val4: "Continuous Innovation",
+    val4Desc: "The digital landscape evolves daily. We constantly adopt and master bleeding-edge technologies so your product never feels outdated.",
+    portDashboards: "Dashboards & Systems",
+    portLanding: "Landing Pages",
+    portAll: "All",
+    portScale: "Scale",
+    portSubtitle: "Explore our elite case studies.",
+    servicesHeroTitle: "Our Expertise",
+    servicesHeroSubtitle: "Detailed breakdowns of our world-class digital offerings.",
+    contactWhatsapp: "WhatsApp Us Directly",
+    contactPhone: "Call Us",
+    contactTitle: "Take your business to the Digital Era.",
+    contactSubtitle: "Whether you need a scalable enterprise system, a high-converting e-commerce platform, or an Awwwards-winning brand identity, we are ready to engineer your success.",
+    cursorText: "VIEW",
+    cursorDetails: "DETAILS",
+    
+    srvcWebTitle: "Enterprise Web Apps",
+    srvcWebDesc: "Integrated, lightning-fast web platforms specifically designed to scale with your business and handle millions of users.",
+    srvcWebTagline: "Enterprise Web Apps - Scale without limits.",
+    srvcWebProp: "If your business is growing and needs a system to seamlessly tie everything together (sales, inventory, clients) without lagging, we build a tailored platform just for you. Not just a website, but a 'digital brain' that saves time and effort.",
+    srvcMobileTitle: "Mobile Development (iOS & Android)",
+    srvcMobileDesc: "Professional mobile applications providing a fast, direct experience for your customers on all iOS and Android devices.",
+    srvcMobileTagline: "Mobile Apps - Your project in every customer's pocket.",
+    srvcMobileProp: "We build applications that run smoothly and quickly on both iPhone and Android. An app makes the buying or booking experience effortless, translating directly into more sales and stronger brand loyalty.",
+    srvcUiTitle: "UI/UX & Motion Design",
+    srvcUiDesc: "Attractive, modern interfaces that offer your customers easy navigation and convert visitors into permanent clients.",
+    srvcUiTagline: "Designs that catch the eye and direct customers to buy instantly.",
+    srvcUiProp: "Design isn't just about looking good; it's about making the customer trust you and find what they need easily. We map the customer journey step-by-step to lead them straight to the 'Buy Now' or 'Contact Us' button gracefully, without distraction.",
+    srvcCloudTitle: "Cloud Architecture & Servers",
+    srvcCloudDesc: "Robust, secure cloud servers ensuring your website and app remain stable and run 24/7 without interruption.",
+    srvcCloudTagline: "Powerful, fast servers that never go down under pressure.",
+    srvcCloudProp: "Nothing costs you customers more than a slow or crashing website. We migrate your business to ultra-powerful cloud servers. Even if thousands of visitors flood in due to an ad, your site stays blazing fast, saving your sales and reputation.",
+    
+    featWeb1: "100% Custom Code", featWeb2: "Intuitive Admin Panel", featWeb3: "Scalable Infrastructure", featWeb4: "Ultimate Data Protection",
+    benWeb1: "Reach customers via an integrated platform.", benWeb2: "Total control over all sales processes.", benWeb3: "Lightning-fast user response times.",
+    featMob1: "Native & Cross-Platform", featMob2: "Attractive & Intuitive UI", featMob3: "Smart Push Notifications", featMob4: "Ultra-fast Performance",
+    benMob1: "Reach customers with direct notifications.", benMob2: "Full support for iOS and Android.", benMob3: "Extremely fast response speeds.",
+    featUi1: "Customer Behavior Study", featUi2: "Smooth Animations", featUi3: "Interactive Prototypes", featUi4: "Premium Visual Identity",
+    benUi1: "Build instant trust with the visitor.", benUi2: "Guide the customer to a purchasing decision.", benUi3: "Exclusive design reflecting your luxury brand.",
+    featCl1: "Incredible Load Speeds", featCl2: "99.99% Uptime", featCl3: "Attack Protection", featCl4: "Auto-scaling",
+    benCl1: "Site stability even during peak hours.", benCl2: "Highest standard data protection.", benCl3: "Browsing speed that boosts your SEO ranking.",
+    benefitsTitle: "Key Benefits", valueTitle: "Value Proposition", ctaBtn: "Request This Service Now"
+  }
+};
 
-        agencyServices: [
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`, title: "Enterprise Web Apps", desc: "Scalable, high-performance web applications engineered to handle millions of users effortlessly.", tech: "React • Next.js • Node.js" },
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`, title: "Mobile Development", desc: "Native-feeling iOS and Android applications with flawless cross-platform parity.", tech: "React Native • Swift • Kotlin" },
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>`, title: "UI/UX & Motion Design", desc: "Awwwards-winning interfaces that captivate users and drive aggressive conversion rates.", tech: "Figma • WebGL • GSAP" },
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>`, title: "Cloud Architecture", desc: "Robust backend systems deployed on modern serverless or microservice infrastructures.", tech: "AWS • Docker • Kubernetes" }
-        ],
-        clientProjects: [
-            { category: "dashboards", title: "Fintech Dashboard", client: "StripeX", tech: "React • TypeScript • D3.js", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo1" },
-            { category: "ecommerce", title: "E-Commerce Platform", client: "Aura Fashion", tech: "Next.js • GraphQL • Tailwind", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo2" },
-            { category: "ai", title: "AI Marketing Tool", client: "CopyGenius", tech: "Vue 3 • OpenAI • Node.js", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo3" },
-            { category: "landing", title: "Web3 Wallet", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
-        ],
-        clientReviews: [
-            { quote: "01 Group completely transformed our digital presence. Our conversion rates increased by 150% within the first month of launch.", name: "Sarah Jenkins", company: "CMO, StripeX" },
-            { quote: "The technical expertise and attention to motion design is unmatched. They delivered an Awwwards-winning site ahead of schedule.", name: "Michael Chen", company: "Founder, Aura Fashion" },
-            { quote: "Their team engineered a highly complex AI backend while keeping the frontend buttery smooth. True world-class professionals.", name: "David Ross", company: "CTO, CopyGenius" },
-            { quote: "Finding an agency that understands both elite UI/UX and hardcore engineering is rare. 01 Group brings both to the table effortlessly.", name: "Elena Rodriguez", company: "VP Product, Nexus" }
-        ]
-    },
-    ar: {
-        nav_services: "خدماتنا",
-        nav_work: "أعمالنا",
-        nav_testimonials: "آراء العملاء",
-        nav_lets_talk: "دعنا نتحدث",
-        hero_title: "نحن نصمم تجارب<br><span class=\"accent-text\">رقمية</span><br>قابلة للتوسع.",
-        hero_subtitle: "نحن وكالة رقمية رائدة نتعاون مع العلامات التجارية الطموحة لبناء تطبيقات ويب وموبايل ذات تحويل عالي الجودة.",
-        hero_cta_start: "ابدأ مشروعك",
-        hero_cta_view: "شاهد أعمالنا",
-        services_title: "خبراتنا الأساسية",
-        services_desc: "تطوير شامل للمنتجات الرقمية مصمم لتحقيق أقصى تأثير.",
-        work_title: "أعمال مختارة",
-        work_desc: "دليل على قدرتنا على تقديم حلول رقمية عالمية المستوى.",
-        work_view_all: "عرض جميع الأعمال",
-        filter_latest: "أحدث الأعمال",
-        empty_category: "لا توجد مشاريع في هذا القسم بعد.",
-        filter_ecommerce: "المتاجر الإلكترونية",
-        filter_landing: "الصفحات التعريفية",
-        filter_dashboards: "الأنظمة الداخلية واللوحات",
-        filter_ai: "أدوات الذكاء الاصطناعي",
-        reviews_title: "ثقة العملاء",
-        footer_title: "مستعد<br><span class=\"accent-text\">للتوسع؟</span>",
-        footer_subtitle: "تواصل معنا ودعنا نصمم شيئًا استثنائيًا معًا.",
-        form_name: "الاسم",
-        form_email: "بريد العمل",
-        form_company: "الشركة",
-        form_budget: "ميزانية المشروع",
-        form_budget_1: "$10k - $25k",
-        form_budget_2: "$25k - $50k",
-        form_budget_3: "$50k - $100k",
-        form_budget_4: "$100k+",
-        form_message: "تفاصيل المشروع",
-        form_submit: "إرسال الطلب",
-        footer_copyright: "&copy; 2026 01 Group. تم التصميم بدقة.",
-        modal_title: "أعمال العملاء الحية",
+function setLanguage(lang) {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  localStorage.setItem('preferred_lang', lang);
+  
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      element.innerHTML = translations[lang][key]; // Strictly use textContent as requested
+    }
+  });
 
-        agencyServices: [
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`, title: "تطبيقات الويب", desc: "تطبيقات ويب قابلة للتطوير وعالية الأداء مصممة للتعامل مع ملايين المستخدمين بسهولة.", tech: "React • Next.js • Node.js" },
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`, title: "تطوير تطبيقات الموبايل", desc: "تطبيقات iOS و Android أصلية مع أداء سلس عبر المنصات.", tech: "React Native • Swift • Kotlin" },
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>`, title: "تصميم واجهة وتجربة المستخدم", desc: "واجهات حائزة على جوائز تجذب المستخدمين وتزيد من معدلات التحويل.", tech: "Figma • WebGL • GSAP" },
-            { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>`, title: "البنية التحتية السحابية", desc: "أنظمة خلفية قوية مبنية على خوادم حديثة بدون خادم.", tech: "AWS • Docker • Kubernetes" }
-        ],
-        clientProjects: [
-            { category: "dashboards", title: "لوحة تحكم التكنولوجيا المالية", client: "StripeX", tech: "React • TypeScript • D3.js", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo1" },
-            { category: "ecommerce", title: "منصة تجارة إلكترونية", client: "Aura Fashion", tech: "Next.js • GraphQL • Tailwind", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo2" },
-            { category: "ai", title: "أداة تسويق بالذكاء الاصطناعي", client: "CopyGenius", tech: "Vue 3 • OpenAI • Node.js", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo3" },
-            { category: "landing", title: "محفظة ويب 3", client: "Nexus Crypto", tech: "React • Ethers.js • Framer", image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", liveUrl: "https://example.com/demo4" }
-        ],
-        clientReviews: [
-            { quote: "قامت 01 Group بتحويل حضورنا الرقمي بالكامل. زادت معدلات التحويل لدينا بنسبة 150٪ في غضون الشهر الأول.", name: "سارة جينكينز", company: "StripeX" },
-            { quote: "الخبرة التقنية والاهتمام بتصميم الحركة لا مثيل لهما. لقد قدموا موقعًا حائزًا على جوائز.", name: "مايكل تشين", company: "Aura Fashion" },
-            { quote: "قام فريقهم بهندسة نظام خلفي معقد للغاية للذكاء الاصطناعي مع الحفاظ على الواجهة الأمامية سلسة.", name: "ديفيد روس", company: "CopyGenius" },
-            { quote: "العثور على 01 Group تفهم كل من تصميم واجهة المستخدم المتميزة والهندسة القوية أمر نادر. إنهم يقدمون كليهما ببراعة.", name: "إيلينا رودريغيز", company: "Nexus" }
-        ]
+  const langBtn = document.getElementById('langToggle');
+  if (langBtn) langBtn.textContent = lang === 'ar' ? 'EN' : 'AR';
+}
+
+
+
+
+// EXPANDABLE ACCORDION CARDS LOGIC
+window.expandServiceCard = function(element) {
+    if (element.classList.contains('expanded')) return;
+    
+    const container = document.querySelector('.services-grid');
+    const allCards = document.querySelectorAll('.service-card');
+    
+    allCards.forEach(card => {
+        card.classList.remove('expanded');
+    });
+    
+    element.classList.add('expanded');
+    if (container) {
+        container.classList.add('has-expanded');
     }
 };
 
-let currentLang = 'en';
-
-function setLanguage(lang) {
-    currentLang = lang;
-    const t = translations[lang];
-
-    // 1. Update HTML language and direction
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
-    // 2. Update static text nodes
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-            el.innerHTML = t[key];
-        }
+window.closeServiceCards = function(event) {
+    event.stopPropagation();
+    const container = document.querySelector('.services-grid');
+    const allCards = document.querySelectorAll('.service-card');
+    
+    allCards.forEach(card => {
+        card.classList.remove('expanded');
     });
-
-    // 3. Update Toggle Button Text
-    const langBtn = document.getElementById('langToggle');
-    if (langBtn) {
-        langBtn.innerText = lang === 'en' ? 'AR' : 'EN';
-    }
-
-    // 4. Re-render dynamic grids
-    renderServices();
-    renderProjects();
-    renderTestimonials();
-}
-
-// ==========================================================================
-// 2. Dynamic Rendering Functions
-// ==========================================================================
-
-function renderServices() {
-    const grid = document.getElementById('servicesGrid');
-    if (!grid) return;
     
-    try {
-        let html = '';
-        translations[currentLang].agencyServices.forEach((service, index) => {
-            const delayClass = `delay-${(index % 4) + 1}`;
-            html += `
-                <div class="service-card reveal-on-scroll ${delayClass}">
-                    <div class="service-icon">${service.icon}</div>
-                    <h3 class="service-title">${service.title}</h3>
-                    <p class="service-desc">${service.desc}</p>
-                    <div class="service-tech">${service.tech}</div>
-                </div>
-            `;
-        });
-        grid.innerHTML = html;
-    } catch(err) {
-        console.error("Failed to render services:", err);
-        grid.innerHTML = `
-            <div class="service-card reveal-on-scroll">
-                <h3 class="service-title">Web Development</h3>
-                <p class="service-desc">Scalable, high-performance web applications engineered to handle millions of users effortlessly.</p>
-            </div>
-            <div class="service-card reveal-on-scroll">
-                <h3 class="service-title">Mobile Apps</h3>
-                <p class="service-desc">Native-feeling iOS and Android applications with flawless cross-platform parity.</p>
-            </div>
-        `;
+    if (container) {
+        container.classList.remove('has-expanded');
     }
-}
+};
 
-// Filter state initialized in DOMContentLoaded
-
-function renderProjects() {
-    const grid = document.getElementById('portfolioGrid');
-    if (!grid) return;
-    
-    try {
-        let html = '';
-        translations[currentLang].clientProjects.forEach((project, index) => {
-            const delayClass = `delay-${(index % 4) + 1}`;
-            html += `
-                <article class="work-card reveal-on-scroll ${delayClass}" data-category="${project.category}">
-                    <div class="card-image-wrapper cursor-trigger" data-cursor="View" data-url="${project.liveUrl}" data-title="${project.title}">
-                        <img src="${project.image}" alt="${project.title}" class="project-img">
-                    </div>
-                    <div class="card-info">
-                        <div>
-                            <h3 class="card-title">${project.title}</h3>
-                            <p class="card-tech">${project.client} &nbsp;•&nbsp; ${project.tech}</p>
-                        </div>
-                    </div>
-                </article>
-            `;
-        });
-        grid.innerHTML = html;
-
-        // Force a small reflow and re-trigger reveal animations for newly injected cards
-        setTimeout(() => {
-            document.querySelectorAll('.work-card').forEach(card => card.classList.add('is-visible'));
-            applyFilter(window.currentFilter); // Ensure current filter is applied
-        }, 50);
-
-        // Re-bind click listeners for the newly injected cards
-        document.querySelectorAll('.card-image-wrapper').forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = trigger.getAttribute('data-url');
-                const title = trigger.getAttribute('data-title');
-                if(url) {
-                    const iframe = document.getElementById('liveIframe');
-                    const modal = document.getElementById('liveModal');
-                    iframe.src = url;
-                    document.getElementById('modalTitle').textContent = title + " - Live Client Work";
-                    modal.classList.add('active');
-                    modal.setAttribute('aria-hidden', 'false');
-                    document.body.style.overflow = 'hidden';
-                    if (typeof lenis !== 'undefined') lenis.stop();
-                }
-            });
-            // Re-bind cursor triggers for new cards
-            trigger.addEventListener('mouseenter', () => {
-                const cursor = document.querySelector('.custom-cursor');
-                if(cursor) {
-                    cursor.classList.add('hover-active');
-                    cursor.querySelector('.cursor-text').textContent = trigger.getAttribute('data-cursor') || 'View';
-                }
-            });
-            trigger.addEventListener('mouseleave', () => {
-                const cursor = document.querySelector('.custom-cursor');
-                if(cursor) cursor.classList.remove('hover-active');
-            });
-        });
-    } catch(err) {
-        grid.innerHTML = oldHTML;
-        console.error("Failed to render projects:", err);
-    }
-}
-
-function renderTestimonials() {
-    const content1 = document.getElementById('testimonialsContent1');
-    const content2 = document.getElementById('testimonialsContent2');
-    if (!content1 || !content2) return;
-    
-    let html = '';
-    translations[currentLang].clientReviews.forEach(review => {
-        html += `
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"${review.quote}"</p>
-                <p class="testimonial-author">${review.name}</p>
-                <p class="testimonial-company">${review.company}</p>
-            </div>
-        `;
-    });
-    content1.innerHTML = html;
-    content2.innerHTML = html;
-}
-
-// ==========================================================================
-// Main Initialization
-// ==========================================================================
+// TESTIMONIALS CAROUSEL NAVIGATION
 document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('testimonialsTrack');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
     
-    // Determine initial filter based on active button
-    const activeBtn = document.querySelector('.filter-btn.active');
-    window.currentFilter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
-
-    // Render all dynamic sections first
-    renderServices();
-    renderProjects();
-    renderTestimonials();
-
-    // --- Page Load Animation ---
-    setTimeout(() => {
-        document.querySelector('.loader-overlay').classList.add('hidden');
-    }, 1000);
-
-    // --- Lenis Smooth Scroll ---
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // --- Smooth Anchor Scrolling ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('mousedown', function (e) {
-            if (e.button !== 0) return; // Only respond to left clicks
-            const targetId = this.getAttribute('href');
-            if (!targetId || targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                
-                // If mobile menu is open, close it
-                const hamburger = document.querySelector('.hamburger');
-                const navLinks = document.querySelector('.nav-links');
-                if (navLinks && navLinks.classList.contains('active')) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    if (typeof lenis !== 'undefined') lenis.start();
-                }
-
-                if (typeof lenis !== 'undefined') {
-                    lenis.scrollTo(targetElement, { offset: -100, duration: 1.2 });
-                } else {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    });
-
-    // --- Custom Cursor & Mouse Glow ---
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorText = document.querySelector('.cursor-text');
-    const root = document.documentElement;
-    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        root.style.setProperty('--mouse-x', `${mouseX}px`);
-        root.style.setProperty('--mouse-y', `${mouseY}px`);
-        if(cursor) cursor.style.opacity = '1';
-    });
-
-    // Fix cursor travelling bug on window edge crossing
-    document.addEventListener('mouseleave', () => {
-        if(cursor) cursor.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
-        cursorX = mouseX; cursorY = mouseY;
-        if(cursor) {
-            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-            cursor.style.opacity = '1';
-        }
-    });
-
-    const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
-
-    function renderCursor() {
-        if (cursor && window.innerWidth > 1024) {
-            cursorX = lerp(cursorX, mouseX, 0.2);
-            cursorY = lerp(cursorY, mouseY, 0.2);
-            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-        }
-        requestAnimationFrame(renderCursor);
-    }
-    requestAnimationFrame(renderCursor);
-
-    // Contextual Cursor Hover States
-    const cursorTriggers = document.querySelectorAll('.cursor-trigger');
-    cursorTriggers.forEach(trigger => {
-        trigger.addEventListener('mouseenter', () => {
-            const contextText = trigger.getAttribute('data-cursor');
-            if (cursorText) cursorText.textContent = contextText;
-            cursor.classList.add('hover-active');
-        });
-        trigger.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover-active');
-        });
-    });
-
-    // Hide custom cursor when hovering over iframe
-    const iframeContainer = document.querySelector('.iframe-container');
-    if (iframeContainer) {
-        iframeContainer.addEventListener('mouseenter', () => {
-            cursor.style.opacity = '0';
-        });
-        iframeContainer.addEventListener('mouseleave', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
-            cursorX = mouseX; cursorY = mouseY;
-            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-            cursor.style.opacity = '1';
-        });
-    }
-
-    // --- Magnetic Elements ---
-    const magnetics = document.querySelectorAll('.magnetic');
-    magnetics.forEach(elem => {
-        elem.addEventListener('mousemove', (e) => {
-            const rect = elem.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            const strength = elem.getAttribute('data-strength') || 20;
-            elem.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
-            cursor.classList.add('hover-magnetic');
+    if (track && prevBtn && nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            // Scroll right (RTL direction handles this depending on browser, generally absolute left scroll or relative)
+            track.scrollBy({ left: -384, behavior: 'smooth' }); // 360 + 24
         });
         
-        elem.addEventListener('mouseleave', () => {
-            elem.style.transform = `translate(0px, 0px)`;
-            cursor.classList.remove('hover-magnetic');
-        });
-    });
-
-    // --- Scroll Reveals ---
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        try {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        } catch(e) { console.error("Reveal Error:", e); }
-    }, revealOptions);
-    revealElements.forEach(el => revealOnScroll.observe(el));
-
-    // --- Navbar ---
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        try {
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        } catch(e) {}
-    });
-
-    // --- Mobile Menu & Smooth Scroll Routing ---
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            if (typeof lenis !== 'undefined') {
-                navLinks.classList.contains('active') ? lenis.stop() : lenis.start();
-            }
-        });
-
-        // Close menu immediately on any link or button click
-        document.querySelectorAll('.nav-links a, .nav-links button').forEach(item => {
-            item.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                if (typeof lenis !== 'undefined') lenis.start();
-            });
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: 384, behavior: 'smooth' });
         });
     }
+});
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                // Scroll to section smoothly using Lenis (or fallback)
-                if (typeof lenis !== 'undefined') {
-                    lenis.scrollTo(targetSection, { offset: -100 });
-                } else {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-                
-                // Close mobile menu if open
-                if (navLinks && navLinks.classList.contains('active')) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    if (typeof lenis !== 'undefined') lenis.start();
-                }
-            }
-        });
-    });
 
-    // --- Scroll-Spy Active Highlighting ---
-    const sections = document.querySelectorAll('section, footer');
-    const navItems = document.querySelectorAll('.nav-links a:not(.btn)');
+// REVIEW MODAL LOGIC
+window.openReviewModal = function(card) {
+    const modal = document.getElementById('review-modal');
+    if (!modal) return;
     
-    const spyOptions = {
-        root: null,
-        rootMargin: '-150px 0px -50% 0px',
-        threshold: 0
-    };
+    // Extract data
+    const clientName = card.querySelector('.testimonial-author').innerText;
+    const clientRole = card.querySelector('.testimonial-company').innerText;
+    const fullReview = card.getAttribute('data-full-review');
+    const projectLink = card.getAttribute('data-link');
     
-    const scrollSpy = new IntersectionObserver((entries) => {
-        try {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navItems.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${entry.target.id}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        } catch(e) { console.error("ScrollSpy Error:", e); }
-    }, spyOptions);
+    // Populate modal
+    document.getElementById('modal-client-name').innerText = clientName;
+    document.getElementById('modal-client-role').innerText = clientRole;
+    document.getElementById('modal-full-review').innerText = fullReview;
     
-    sections.forEach(sec => scrollSpy.observe(sec));
-
-    // --- Modal Logic ---
-    const modal = document.getElementById('liveModal');
-    const iframe = document.getElementById('liveIframe');
-    
-    function openModal(url, title) {
-        iframe.src = url;
-        document.getElementById('modalTitle').textContent = title + " - Live Client Work";
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        if (typeof lenis !== 'undefined') lenis.stop();
+    const linkBtn = document.getElementById('modal-live-link');
+    if (projectLink && projectLink !== '#') {
+        linkBtn.href = projectLink;
+        linkBtn.style.display = 'inline-flex';
+    } else {
+        linkBtn.style.display = 'none';
     }
     
-    function closeModal() {
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling background
+};
+
+window.closeReviewModal = function() {
+    const modal = document.getElementById('review-modal');
+    if (modal) {
         modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = ''; // Restore scrolling
-        if (typeof lenis !== 'undefined') lenis.start();
-        setTimeout(() => iframe.src = '', 600);
+        document.body.style.overflow = '';
     }
+};
 
-    document.querySelectorAll('.card-image-wrapper').forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            const url = trigger.getAttribute('data-url');
-            const title = trigger.getAttribute('data-title');
-            if(url) openModal(url, title);
-        });
-    });
-
-    document.querySelector('.btn-close-modal').addEventListener('click', closeModal);
-    document.querySelector('.close-dot').addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target.classList.contains('modal-backdrop')) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
-
-    // --- CRO Form Submission Simulation ---
-    const contactForm = document.getElementById('contactForm');
-    if(contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('.submit-btn');
-            const originalText = btn.textContent;
-            
-            btn.textContent = 'Processing Inquiry...';
-            btn.style.opacity = '0.7';
-            
-            setTimeout(() => {
-                btn.textContent = 'Inquiry Received!';
-                btn.style.background = '#00f2fe';
-                btn.style.color = '#000';
-                btn.style.opacity = '1';
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = '';
-                    btn.style.color = '';
-                }, 4000);
-            }, 1500);
-        });
+// DISABLE CUSTOM CURSOR ON TOUCH DEVICES
+document.addEventListener('DOMContentLoaded', () => {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        const customCursors = document.querySelectorAll('.custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline');
+        customCursors.forEach(c => c.style.display = 'none');
     }
+});
 
-    // --- Language Translation Engine Init ---
-    setLanguage('en'); // Initialize default language
-    const langBtn = document.getElementById('langToggle');
-    if (langBtn) {
-        langBtn.addEventListener('click', () => {
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-            setLanguage(newLang);
+// MOBILE MENU TOGGLE LOGIC
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.hamburger, .menu-btn, .mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.nav-links, .mobile-menu, .mobile-nav');
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+            menuBtn.classList.toggle('is-active');
         });
-    }
-
-    // --- Portfolio Filter Logic ---
-    function applyFilter(filterValue) {
-        const grid = document.getElementById('portfolioGrid');
-        if (!grid) return;
-        const projects = grid.querySelectorAll('.work-card');
         
-        // Remove existing empty state if any
-        const existingEmpty = grid.querySelector('.empty-state');
-        if (existingEmpty) existingEmpty.remove();
-
-        let displayedCount = 0;
-
-        projects.forEach(project => {
-            let shouldShow = false;
-            
-            if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
-                shouldShow = true;
-            }
-
-            if (shouldShow) {
-                project.style.display = 'block';
-                displayedCount++;
-                // Small delay to allow display block to take effect before animating opacity
-                setTimeout(() => {
-                    project.style.opacity = '1';
-                    project.style.transform = 'translateZ(0) scale(1)';
-                }, 10);
-            } else {
-                project.style.opacity = '0';
-                project.style.transform = 'translateZ(0) scale(0.95)';
-                setTimeout(() => {
-                    project.style.display = 'none';
-                }, 400); // Matches CSS transition duration
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                menuBtn.classList.remove('is-active');
             }
         });
-
-        // Handle Empty State
-        if (displayedCount === 0) {
-            const emptyState = document.createElement('div');
-            emptyState.className = 'empty-state';
-            emptyState.style.gridColumn = '1 / -1';
-            emptyState.style.textAlign = 'center';
-            emptyState.style.padding = '4rem 0';
-            emptyState.style.color = 'var(--text-secondary)';
-            emptyState.style.fontSize = '1.2rem';
-            emptyState.innerText = translations[currentLang].empty_category;
-            grid.appendChild(emptyState);
-        }
     }
+});
 
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // Remove active from all
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active to clicked
-            e.target.classList.add('active');
-            
-            // Update global filter
-            window.currentFilter = e.target.getAttribute('data-filter');
-            
-            // Apply filtering logic directly to DOM elements
-            applyFilter(window.currentFilter);
+// CUSTOM CURSOR VIEWPORT FADE LOGIC
+document.addEventListener('DOMContentLoaded', () => {
+    const customCursors = document.querySelectorAll('.custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline');
+    
+    if (customCursors.length > 0) {
+        document.addEventListener('mouseleave', () => {
+            customCursors.forEach(c => c.classList.add('is-hidden'));
         });
-    });
 
+        document.addEventListener('mouseenter', () => {
+            customCursors.forEach(c => c.classList.remove('is-hidden'));
+        });
+
+        window.addEventListener('blur', () => {
+            customCursors.forEach(c => c.classList.add('is-hidden'));
+        });
+
+        window.addEventListener('focus', () => {
+            customCursors.forEach(c => c.classList.remove('is-hidden'));
+        });
+    }
 });

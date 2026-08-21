@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة 01 | حلول رقمية</title>
+    <meta name="description" content="An elite digital development agency specializing in high-performance web and mobile applications.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Premium Fonts: Syne for Headings, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script defer src="script.js"></script>
+</head>
+<body class="dark-theme">
+    
+
+
+    <!-- Mouse Tracking Glow Background -->
+    <div class="glow-bg"></div>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo-text magnetic" data-strength="20">
+                <span class="brand-name">01</span> <span class="brand-group">Group</span>
+            </a>
+            
+            <button class="hamburger magnetic" aria-label="Toggle Navigation" data-strength="20">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-links">
+                <a href="index.html" class="magnetic" data-strength="15" data-i18n="navHome">الرئيسية</a>
+                <a href="about.html" class="magnetic" data-strength="15" data-i18n="navAbout">من نحن</a>
+                <a href="services.html" class="magnetic" data-strength="15" data-i18n="navServices">خدماتنا</a>
+                <a href="portfolio.html" class="magnetic" data-strength="15" data-i18n="navWork">أعمالنا</a>
+                <button class="lang-toggle-btn btn btn-nav magnetic" id="langToggle" data-strength="15" style="color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; background: transparent !important; margin-left: 10px; padding: 0.5rem 1rem;">EN</button>
+                <a href="contact.html" class="btn btn-nav magnetic" data-strength="30" data-i18n="ctaProject">ابدأ مشروعك</a>
+            </nav>
+        </div>
+    </header>
+
+    
+    <!-- Main Content Wrapper for Lenis -->
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <section id="portfolio-hero" class="hero container reveal-on-scroll" style="min-height: 50vh; padding-top: 15vh;">
+                <h1 class="hero-title">
+                    Projects Built to <span class="accent-text" data-i18n="portScale">توسع</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="portSubtitle">استكشف دراسات الحالة المميزة لدينا.</p>
+            </section>
+            
+            <section id="work" class="work-showcase container">
+                <div class="portfolio-filters reveal-on-scroll delay-1">
+                    <button class="filter-btn active magnetic" data-filter="all" data-strength="15" data-i18n="portAll">الكل</button>
+                    <button class="filter-btn magnetic" data-filter="ecommerce" data-strength="15" data-i18n="formOptEcommerce">متاجر إلكترونية</button>
+                    <button class="filter-btn magnetic" data-filter="landing" data-strength="15" data-i18n="portLanding">صفحات هبوط</button>
+                    <button class="filter-btn magnetic" data-filter="dashboards" data-strength="15" data-i18n="portDashboards">لوحات تحكم وأنظمة</button>
+                    <button class="filter-btn magnetic" data-filter="ai" data-strength="15" data-i18n="formOptAi">الذكاء الاصطناعي</button>
+                </div>
+                <div class="portfolio-grid" id="portfolioGrid">
+
+<article class="portfolio-card reveal-on-scroll">
+    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fintech Dashboard">
+    </div>
+    <div class="card-info" style="padding-top: 16px;">
+        <h3 class="card-title" data-i18n="port1Title" style="font-size:1.4rem;">لوحة تحكم التكنولوجيا المالية</h3>
+        <p class="card-tech">React &nbsp;•&nbsp; Node.js &nbsp;•&nbsp; AWS</p>
+    </div>
+</article>
+
+<article class="portfolio-card reveal-on-scroll">
+    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce">
+    </div>
+    <div class="card-info" style="padding-top: 16px;">
+        <h3 class="card-title" data-i18n="port2Title" style="font-size:1.4rem;">منصة تجارة إلكترونية</h3>
+        <p class="card-tech">Next.js &nbsp;•&nbsp; Stripe &nbsp;•&nbsp; PostgreSQL</p>
+    </div>
+</article>
+
+<article class="portfolio-card reveal-on-scroll">
+    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI SaaS">
+    </div>
+    <div class="card-info" style="padding-top: 16px;">
+        <h3 class="card-title" data-i18n="port3Title" style="font-size:1.4rem;">تطبيق الذكاء الاصطناعي</h3>
+        <p class="card-tech">Python &nbsp;•&nbsp; OpenAI &nbsp;•&nbsp; Vue.js</p>
+    </div>
+</article>
+
+<article class="portfolio-card reveal-on-scroll">
+    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ERP System">
+    </div>
+    <div class="card-info" style="padding-top: 16px;">
+        <h3 class="card-title" data-i18n="port4Title" style="font-size:1.4rem;">نظام إدارة المؤسسات</h3>
+        <p class="card-tech">Angular &nbsp;•&nbsp; Spring Boot &nbsp;•&nbsp; Docker</p>
+    </div>
+</article>
+
+</div>
+    <div class="card-info" style="padding-top: 20px;">
+        <div>
+            <h3 class="card-title">Enterprise Dashboard</h3>
+            <p class="card-tech">Fintech Corp &nbsp;•&nbsp; React, Node.js, AWS</p>
+        </div>
+    </div>
+</article>
+<article class="portfolio-card reveal-on-scroll" data-category="mobile">
+    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view" data-url="https://digitfans.net/01group-demo2" data-title="Mobile App">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile App" class="project-img">
+    </div>
+    <div class="card-info" style="padding-top: 20px;">
+        <div>
+            <h3 class="card-title">E-Commerce App</h3>
+            <p class="card-tech">Retail Brand &nbsp;•&nbsp; Flutter, Firebase</p>
+        </div>
+    </div>
+</article>
+
+</div>
+            </section>
+
+        </div>
+    </main>
+    <!-- Contact & Footer (The Close) -->
+            <footer id="contact" class="footer-section">
+                <div class="container footer-grid reveal-on-scroll">
+                    <div class="contact-info">
+                        <h2 class="massive-title" data-i18n="ctaScale">جاهز <span class="text-accent">للتوسع؟</span></h2>
+                        <p class="contact-subtext" data-i18n="footerSubtitle">تواصل معنا لنبني شيئاً استثنائياً معاً.</p>
+                        
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/profile.php?id=61593454711340" target="_blank" rel="noopener noreferrer" class="magnetic" data-strength="30" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                            <a href="https://www.instagram.com/zero_0ne_group/?__pwa=1" target="_blank" rel="noopener noreferrer" class="magnetic" data-strength="30" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <input type="text" id="name" name="name" required placeholder=" " />
+                                <label for="name" data-i18n="formName">الاسم</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" name="email" required placeholder=" " />
+                                <label for="email" data-i18n="formEmail">البريد الإلكتروني</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <input type="text" id="company" name="company" required placeholder=" " />
+                                <label for="company" data-i18n="formCompany">الشركة</label>
+                            </div>
+                            <div class="input-group select-group">
+                                <select id="budget" name="budget" required>
+                                    <option value="" disabled selected>ميزانية المشروع</option>
+                                    <option value="10k-25k">$10k - $25k</option>
+                                    <option value="25k-50k">$25k - $50k</option>
+                                    <option value="50k-100k">$50k - $100k</option>
+                                    <option value="100k+">$100k+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" name="message" rows="3" required placeholder=" "></textarea>
+                            <label for="message" data-i18n="formMessage">تفاصيل المشروع</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn magnetic" data-strength="40" data-i18n="formSubmit">إرسال الطلب</button>
+                    </form>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 01 Group. Digital Solutions.</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Glassmorphic Full-screen iframe Modal -->
+    <div id="liveModal" class="modal glass-modal" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <header class="modal-header">
+                <div class="modal-controls">
+                    <span class="control-dot close-dot"></span>
+                    <span class="control-dot min-dot"></span>
+                    <span class="control-dot max-dot"></span>
+                </div>
+                <h3 class="modal-title" id="modalTitle">عمل مباشر للعميل</h3>
+                <button class="btn-close-modal magnetic" data-strength="30" aria-label="Close Modal">&times;</button>
+            </header>
+            <div class="iframe-container">
+                <div class="loader"></div>
+                <iframe id="liveIframe" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor & Glow -->
+    </div>
+    <div class="glow-bg"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+
+
+<div id="custom-cursor" class="custom-cursor"></div>
+
+<style>
+  html, body, a, button { cursor: none !important; }
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: width 0.2s, height 0.2s;
+  }
+</style>
+
+<script>
+  window.addEventListener('mousemove', (e) => {
+    const cursor = document.getElementById('custom-cursor');
+    if (cursor) {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    }
+  });
+</script>
+</body>
+</html>

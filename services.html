@@ -55,43 +55,15 @@
     <!-- Main Content Wrapper for Lenis -->
     <main id="smooth-wrapper">
         <div id="smooth-content">
-            <!-- Hero Section (CRO Hook) -->
-            <section id="hero" class="hero container reveal-on-scroll" style="text-align: center;">
-                <div class="hero-content-wrapper" style="display: block;">
-                    <div class="hero-text-content" style="max-width: 800px; margin: 0 auto;">
-                        <h1 class="hero-title" data-i18n="heroTitle">نحن نصمم <span class="text-accent">تجارب رقمية</span> قابلة للتوسع.</h1>
-                        <p class="hero-subtitle" style="max-width: 600px; margin: 1.5rem auto;" data-i18n="heroSubtitle">نحن وكالة رقمية رائدة تتعاون مع العلامات التجارية الطموحة لبناء تطبيقات ويب وهواتف عالية التحويل.</p>
-                        <div class="hero-cta" style="justify-content: center; margin: 2rem auto;">
-                            <a href="contact.html" class="btn btn-primary btn-glow magnetic" data-strength="50" data-i18n="ctaProject">ابدأ مشروعك</a>
-                            <a href="portfolio.html" class="btn btn-secondary magnetic" data-strength="30" data-i18n="ctaWork">شاهد أعمالنا</a>
-                        </div>
-                        <div class="stats-container" style="justify-content: center; max-width: 600px; margin: 3rem auto 0; padding-top: 3rem;">
-                            <div class="stat-item">
-                                <div><span class="stat-number stat-counter" data-target="150">0</span><span class="stat-number">+</span></div>
-                                <span class="stat-label" data-i18n="stat1">مشروع منجز</span>
-                            </div>
-                            <div class="stat-item">
-                                <div><span class="stat-number stat-counter" data-target="100">0</span><span class="stat-number">%</span></div>
-                                <span class="stat-label" data-i18n="stat2">نمو العملاء</span>
-                            </div>
-                            <div class="stat-item">
-                                <div><span class="stat-number stat-counter" data-target="12">0</span></div>
-                                <span class="stat-label" data-i18n="stat3">جائزة صناعية</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
+            <section id="services-hero" class="hero container reveal-on-scroll" style="min-height: 50vh; padding-top: 15vh;">
+                <h1 class="hero-title">
+                    خبراتنا وحلولنا الرقمية
+                </h1>
+                <p class="hero-subtitle" data-i18n="servicesHeroSubtitle">تفاصيل عن خدماتنا الرقمية العالمية.</p>
             </section>
-
-            <!-- Services Section -->
+            
             <section id="services" class="services-section container">
-                <div class="section-header reveal-on-scroll">
-                    <h2 class="section-title" data-i18n="expertiseTitle">الخبرات <span class="text-accent">الأساسية</span></h2>
-                    <p class="section-desc">تطوير شامل للمنتجات الرقمية مصمم لتحقيق أقصى تأثير.</p>
-                </div>
-                <div class="section-header-divider"></div>
-
-                <!-- Injected via script.js -->
                 <div class="services-grid" id="servicesGrid">
 <div class="service-card reveal-on-scroll magnetic cursor-trigger" data-strength="10" data-cursor="cursor_details" onclick="expandServiceCard(this)">
     <button class="close-card-btn" onclick="closeServiceCards(event)">✕</button>
@@ -195,134 +167,6 @@
 </div>
 </section>
 
-            <!-- Live Works Showcase -->
-            <section id="work" class="work-showcase container">
-                <div class="section-header reveal-on-scroll">
-                    <h2 class="section-title" data-i18n="worksTitle">أعمالنا المختارة</h2>
-                    <p class="section-desc" data-i18n="worksSubtitle">دليل على قدرتنا على تقديم حلول رقمية عالمية المستوى.</p>
-                </div>
-                
-                <!-- Category Filters (Injected via script.js for i18n support or hardcoded with i18n tags) -->
-                
-                <!-- Injected via script.js -->
-                <div class="portfolio-grid" id="portfolioGrid">
-
-<article class="portfolio-card reveal-on-scroll">
-    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fintech Dashboard">
-    </div>
-    <div class="card-info" style="padding-top: 16px;">
-        <h3 class="card-title" data-i18n="port1Title" style="font-size:1.4rem;">لوحة تحكم التكنولوجيا المالية</h3>
-        <p class="card-tech">React &nbsp;•&nbsp; Node.js &nbsp;•&nbsp; AWS</p>
-    </div>
-</article>
-
-<article class="portfolio-card reveal-on-scroll">
-    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce">
-    </div>
-    <div class="card-info" style="padding-top: 16px;">
-        <h3 class="card-title" data-i18n="port2Title" style="font-size:1.4rem;">منصة تجارة إلكترونية</h3>
-        <p class="card-tech">Next.js &nbsp;•&nbsp; Stripe &nbsp;•&nbsp; PostgreSQL</p>
-    </div>
-</article>
-
-<article class="portfolio-card reveal-on-scroll">
-    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
-        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI SaaS">
-    </div>
-    <div class="card-info" style="padding-top: 16px;">
-        <h3 class="card-title" data-i18n="port3Title" style="font-size:1.4rem;">تطبيق الذكاء الاصطناعي</h3>
-        <p class="card-tech">Python &nbsp;•&nbsp; OpenAI &nbsp;•&nbsp; Vue.js</p>
-    </div>
-</article>
-
-<article class="portfolio-card reveal-on-scroll">
-    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ERP System">
-    </div>
-    <div class="card-info" style="padding-top: 16px;">
-        <h3 class="card-title" data-i18n="port4Title" style="font-size:1.4rem;">نظام إدارة المؤسسات</h3>
-        <p class="card-tech">Angular &nbsp;•&nbsp; Spring Boot &nbsp;•&nbsp; Docker</p>
-    </div>
-</article>
-
-</div>
-    <div class="card-info" style="padding-top: 20px;">
-        <div>
-            <h3 class="card-title">Enterprise Dashboard</h3>
-            <p class="card-tech">Fintech Corp &nbsp;•&nbsp; React, Node.js, AWS</p>
-        </div>
-    </div>
-</article>
-<article class="portfolio-card reveal-on-scroll" data-category="mobile">
-    <div class="card-image-wrapper cursor-trigger" data-cursor="cursor_view" data-url="https://digitfans.net/01group-demo2" data-title="Mobile App">
-        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile App" class="project-img">
-    </div>
-    <div class="card-info" style="padding-top: 20px;">
-        <div>
-            <h3 class="card-title">E-Commerce App</h3>
-            <p class="card-tech">Retail Brand &nbsp;•&nbsp; Flutter, Firebase</p>
-        </div>
-    </div>
-</article>
-
-</div>
-
-
-                <div style="text-align: center; margin-top: 40px;"><a href="portfolio.html" class="btn btn-secondary magnetic" data-strength="30" data-i18n="viewAllWorks">عرض كل الأعمال</a></div>
-            </section>
-
-            <!-- Social Proof / Testimonials -->
-            <section id="reviews" class="reviews-section">
-                <div class="container reveal-on-scroll">
-                    <h2 class="section-title" data-i18n="clientTrust"><span class="text-accent">ثقة</span> العملاء</h2>
-                </div>
-                <div class="marquee-container testimonial-marquee">
-                    <!-- Injected via script.js -->
-                    <div class="marquee-content" id="testimonialsContent1">
-
-<div class="testimonial-card" style="display: inline-block; padding: 24px; background: #121212; border: 1px solid #222; border-radius: 12px; margin-right: 24px; width: 350px; text-align: left;">
-    <p class="testimonial-quote">"01 Group delivered our enterprise system 3x faster than expected. Pure brilliance."</p>
-    <p class="testimonial-author" style="color: #ffffff; margin-top: 15px; font-weight: bold;">Ahmed T.</p>
-    <p class="testimonial-company" style="font-size: 0.9rem; color: #888;">CEO, TechVision</p>
-</div>
-<div class="testimonial-card" style="display: inline-block; padding: 24px; background: #121212; border: 1px solid #222; border-radius: 12px; margin-right: 24px; width: 350px; text-align: left;">
-    <p class="testimonial-quote">"Our sales skyrocketed after the UI/UX overhaul. Unmatched quality."</p>
-    <p class="testimonial-author" style="color: #ffffff; margin-top: 15px; font-weight: bold;">Sara M.</p>
-    <p class="testimonial-company" style="font-size: 0.9rem; color: #888;">Founder, StyleHub</p>
-</div>
-<div class="testimonial-card" style="display: inline-block; padding: 24px; background: #121212; border: 1px solid #222; border-radius: 12px; margin-right: 24px; width: 350px; text-align: left;">
-    <p class="testimonial-quote">"Their cloud architecture saved us during Black Friday. Highly recommended."</p>
-    <p class="testimonial-author" style="color: #ffffff; margin-top: 15px; font-weight: bold;">Omar K.</p>
-    <p class="testimonial-company" style="font-size: 0.9rem; color: #888;">CTO, E-Shop</p>
-</div>
-
-</div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="marquee-content" id="testimonialsContent2" aria-hidden="true">
-
-<div class="testimonial-card" style="display: inline-block; padding: 24px; background: #121212; border: 1px solid #222; border-radius: 12px; margin-right: 24px; width: 350px; text-align: left;">
-    <p class="testimonial-quote">"01 Group delivered our enterprise system 3x faster than expected. Pure brilliance."</p>
-    <p class="testimonial-author" style="color: #ffffff; margin-top: 15px; font-weight: bold;">Ahmed T.</p>
-    <p class="testimonial-company" style="font-size: 0.9rem; color: #888;">CEO, TechVision</p>
-</div>
-<div class="testimonial-card" style="display: inline-block; padding: 24px; background: #121212; border: 1px solid #222; border-radius: 12px; margin-right: 24px; width: 350px; text-align: left;">
-    <p class="testimonial-quote">"Our sales skyrocketed after the UI/UX overhaul. Unmatched quality."</p>
-    <p class="testimonial-author" style="color: #ffffff; margin-top: 15px; font-weight: bold;">Sara M.</p>
-    <p class="testimonial-company" style="font-size: 0.9rem; color: #888;">Founder, StyleHub</p>
-</div>
-<div class="testimonial-card" style="display: inline-block; padding: 24px; background: #121212; border: 1px solid #222; border-radius: 12px; margin-right: 24px; width: 350px; text-align: left;">
-    <p class="testimonial-quote">"Their cloud architecture saved us during Black Friday. Highly recommended."</p>
-    <p class="testimonial-author" style="color: #ffffff; margin-top: 15px; font-weight: bold;">Omar K.</p>
-    <p class="testimonial-company" style="font-size: 0.9rem; color: #888;">CTO, E-Shop</p>
-</div>
-
-</div>
-                </div>
-            </section>
-
-            
         </div>
     </main>
     <!-- Contact & Footer (The Close) -->
@@ -403,40 +247,13 @@
     <div class="glow-bg"></div>
 
     
-    <!-- Service Detail Modal -->
-    <div id="serviceModal" class="modal glass-modal" aria-hidden="true">
-        <div class="modal-backdrop" id="serviceModalBackdrop"></div>
-        <div class="modal-content" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
-            <header class="modal-header">
-                <div class="modal-controls">
-                    <span class="control-dot close-dot"></span>
-                    <span class="control-dot min-dot"></span>
-                    <span class="control-dot max-dot"></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div id="serviceModalIcon" style="width: 24px; height: 24px; color: var(--accent-primary);"></div>
-                    <h3 class="modal-title" id="serviceModalTitle" style="margin: 0; font-size: 1.2rem;">عنوان الخدمة</h3>
-                </div>
-                <button class="btn-close-modal magnetic" id="closeServiceModal" data-strength="30" aria-label="Close Modal">&times;</button>
-            </header>
-            <div class="service-modal-body" style="padding: 2rem; color: #fff;">
-                <h4 id="serviceModalTagline" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-primary); line-height: 1.4;"></h4>
-                <p id="serviceModalExplanation" style="font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem;"></p>
-                <h5 style="font-size: 1.2rem; margin-bottom: 1rem; color: #fff;">الفوائد الرئيسية</h5>
-                <ul id="serviceModalBenefits" style="list-style: none; padding: 0; margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
-                    <!-- Injected via JS -->
-                </ul>
-                <div id="serviceModalTech" style="margin-bottom: 2rem; color: var(--accent-secondary); font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;"></div>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a id="serviceModalCTA" href="contact.html" class="btn btn-primary btn-glow magnetic" data-strength="30">اطلب هذه الخدمة</a>
-                </div>
-            </div>
-        </div>
+    
     </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
     <script src="script.js"></script>
+
 
 <div id="custom-cursor" class="custom-cursor"></div>
 

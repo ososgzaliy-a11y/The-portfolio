@@ -1,3 +1,20 @@
+html, 
+body, 
+*, 
+*::before, 
+*::after, 
+a, 
+button, 
+input, 
+textarea, 
+select, 
+option, 
+label, 
+[role="button"], 
+[tabindex] {
+    cursor: none !important;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap');
 /* ==========================================================================
@@ -21,8 +38,8 @@
     --border-glass-hover: rgba(255, 255, 255, 0.15);
     
     /* Typography */
-    --font-heading: 'Syne', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Cairo', sans-serif;
+    --font-body: 'Cairo', sans-serif;
     
     /* Layout */
     --container-width: 1400px;
@@ -67,35 +84,12 @@ body {
 }
 
 /* Custom Cursor Styles */
-.custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    background-color: #ffffff; /* Default white cursor for dark background */
-    border-radius: 50%;
-    pointer-events: none !important;
-    z-index: 999999;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
-}
+
 
 /* Optional: If cursor hovers over white sections, invert to black via class toggle or background check */
-body.cursor-on-light .custom-cursor {
-    background-color: #000000;
-}
+body.cursor-on-light 
 
-body .custom-cursor.hover-active {
-    width: 100px;
-    height: 100px;
-    background-color: var(--text-primary);
-    border-color: transparent;
-    mix-blend-mode: normal;
-}
+body 
 
 .cursor-text {
     color: var(--bg-main);
@@ -109,19 +103,16 @@ body .custom-cursor.hover-active {
     text-align: center;
 }
 
-body .custom-cursor.hover-active .cursor-text {
-    opacity: 1;
+body 
+
+
+
+/* Eliminate OS Native Cursor Everywhere */
+html, body, *, a, button, input, textarea, select, [role="button"] {
+    cursor: none !important;
 }
 
-.custom-cursor.hover-magnetic {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    mix-blend-mode: normal;
-    border-color: transparent;
-}
-
+body:has(input:hover, textarea:hover, select:hover, input:focus, textarea:focus, select:focus) 
 /* Mouse Tracking Glow */
 .glow-bg {
     position: fixed;
@@ -190,10 +181,12 @@ section:nth-child(even) {
 }
 
 .accent-text {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background: linear-gradient(to left, #7A8288 0%, #ffffff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.15)) !important;
+    text-shadow: none !important;
 }
 
 /* ==========================================================================
@@ -424,6 +417,7 @@ section:nth-child(even) {
     transition: all var(--transition-fast);
     position: relative;
     overflow: hidden;
+    overflow: hidden !important;
 }
 
 .service-card:hover {
@@ -525,7 +519,7 @@ section:nth-child(even) {
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 600;
-    cursor: pointer;
+    cursor: none !important;
     transition: all var(--transition-fast);
 }
 
@@ -542,7 +536,7 @@ section:nth-child(even) {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg) var(--spacing-md);
 }
 
@@ -552,18 +546,14 @@ section:nth-child(even) {
     overflow: hidden;
     transform: translateZ(0);
     transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
 }
-
-/* Asymmetrical sizing */
-.work-card:nth-child(4n + 1) { grid-column: span 7; }
-.work-card:nth-child(4n + 2) { grid-column: span 5; margin-top: 10vh; }
-.work-card:nth-child(4n + 3) { grid-column: span 5; }
-.work-card:nth-child(4n + 4) { grid-column: span 7; margin-top: -10vh; }
 
 .card-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 4/3;
+    height: 280px;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -750,7 +740,7 @@ section:nth-child(even) {
     color: var(--text-primary);
 }
 .select-group::after {
-    content: "▼";
+    content: \"▼\";
     position: absolute;
     right: 0;
     top: 50%;
@@ -921,8 +911,8 @@ section:nth-child(even) {
         flex-direction: column;
     }
     
-    .custom-cursor { display: none; }
-    * { cursor: auto !important; }
+    
+    * { cursor: none !important; }
 }
 
 @media (max-width: 768px) {
@@ -1001,7 +991,7 @@ section:nth-child(even) {
         height: 20px;
         background: transparent;
         border: none;
-        cursor: pointer;
+        cursor: none !important;
         padding: 0;
         z-index: 10001;
         position: relative;
@@ -1039,8 +1029,9 @@ section:nth-child(even) {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: #000000 !important;
-        backdrop-filter: none;
+        background-color: rgba(3, 3, 3, 0.85) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         padding: 2rem;
         border: none;
         z-index: 10000;
@@ -1057,13 +1048,22 @@ section:nth-child(even) {
         pointer-events: auto;
     }
     
-    .nav-links a, .nav-links button {
+    .nav-links a:not(.btn), .nav-links button:not(.btn) {
         opacity: 0;
         transform: translateY(20px);
         transition: all 0.4s ease;
         margin: 1rem 0; /* Add some spacing for mobile layout */
+        font-size: 1.75rem !important; /* Larger text for thumb-friendliness */
+        font-weight: 700 !important;
+        color: #ffffff;
     }
-    
+
+    .nav-links .btn {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        margin: 1rem 0;
+    }
     .nav-links.active a, .nav-links.active button {
         opacity: 1;
         transform: translateY(0);
@@ -1079,44 +1079,44 @@ section:nth-child(even) {
 /* ==========================================================================
    RTL Engine (Arabic)
    ========================================================================== */
-html[lang="ar"] {
+html[lang=\"ar\"] {
     font-family: 'Cairo', sans-serif;
 }
 
-html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, 
-html[lang="ar"] .hero-title, html[lang="ar"] .section-title, html[lang="ar"] .massive-title, html[lang="ar"] .btn {
+html[lang=\"ar\"] h1, html[lang=\"ar\"] h2, html[lang=\"ar\"] h3, 
+html[lang=\"ar\"] .hero-title, html[lang=\"ar\"] .section-title, html[lang=\"ar\"] .massive-title, html[lang=\"ar\"] .btn {
     font-family: 'Cairo', sans-serif;
 }
 
 /* Auto-mirroring overrides */
-html[dir="rtl"] .hamburger {
+html[dir=\"rtl\"] .hamburger {
     margin-left: 0;
     margin-right: auto;
 }
 
-html[dir="rtl"] .nav-links {
+html[dir=\"rtl\"] .nav-links {
     flex-direction: row-reverse;
 }
 
 @media (max-width: 768px) {
-    html[dir="rtl"] .nav-links {
+    html[dir=\"rtl\"] .nav-links {
         flex-direction: column;
         right: 0;
         left: auto;
     }
 }
 
-html[dir="rtl"] .hero-title,
-html[dir="rtl"] .hero-subtitle,
-html[dir="rtl"] .hero-cta {
+html[dir=\"rtl\"] .hero-title,
+html[dir=\"rtl\"] .hero-subtitle,
+html[dir=\"rtl\"] .hero-cta {
     text-align: right;
 }
 
-html[dir="rtl"] .section-header {
+html[dir=\"rtl\"] .section-header {
     text-align: right;
 }
 
-html[dir="rtl"] .nav-links a:not(.btn)::after {
+html[dir=\"rtl\"] .nav-links a:not(.btn)::after {
     right: 50%;
     left: auto;
     transform: translateX(50%);
@@ -1185,7 +1185,7 @@ Navbar Dot Killer
 }
 
 
-/* 
+/*
 =========================================
 View All Button
 =========================================
@@ -1204,7 +1204,7 @@ View All Button
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
+    cursor: none !important;
     z-index: 10;
     position: relative;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
@@ -1217,30 +1217,33 @@ View All Button
     border-color: #ffffff !important;
 }
 
-/* Clean 2x2 Uniform Grid */
+/* Reset grid to a reliable 2-column layout with proper spacing */
 .work-grid {
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Exactly 2 columns */
-  gap: 40px !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* Exactly 2 cards per row */
+  gap: 35px !important;
   width: 100% !important;
-  max-width: 1100px !important;
+  max-width: 1200px !important;
   margin: 40px auto 0 auto !important;
+  padding: 0 20px !important;
 }
 
-/* Force every card to be identical in width and layout structure */
+/* Ensure project cards sit nicely side by side without weird full-width stretching */
 .work-card {
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   background: transparent !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
 }
 
-/* Strictly uniform image dimensions for all 4 cards */
+/* Natural, clean image container height (no weird square cropping) */
 .work-card .card-image-wrapper {
   width: 100% !important;
-  height: 300px !important; /* Fixed identical height for all cards */
+  height: 280px !important; /* Clean, uniform height for all side-by-side cards */
   overflow: hidden !important;
-  border-radius: 16px !important;
+  border-radius: 14px !important;
   background-color: #111111 !important;
 }
 
@@ -1249,11 +1252,2006 @@ View All Button
   height: 100% !important;
   object-fit: cover !important;
   display: block !important;
+  transition: transform 0.4s ease;
+}
+
+.work-card:hover .card-image-wrapper img {
+  transform: scale(1.03);
 }
 
 /* Mobile responsive fallback */
 @media (max-width: 768px) {
   .work-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr !important; /* 1 per row on phones */
   }
+}
+
+/* ==========================================================================
+   Comprehensive Architecture Upgrade Styles
+   ========================================================================== */
+
+/* Hero Stats Container */
+.hero-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+.hero-text-content {
+    flex: 1 1 500px;
+}
+.hero-visual-content {
+    flex: 1 1 400px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.hero-visual-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.hero-visual-content:hover img {
+    transform: scale(1.05);
+}
+.hero-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: none !important;
+    transition: all 0.3s ease;
+}
+.hero-play-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.stats-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+.stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    line-height: 1.1;
+}
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+}
+
+/* Category Filters */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+.filter-tab {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: none !important;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.filter-tab:hover, .filter-tab.active {
+    background: var(--accent-primary);
+    color: #000;
+    border-color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* Service Card Numbers */
+.service-card {
+    position: relative;
+    overflow: hidden;
+}
+.service-number {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 8rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 1;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+.service-card:hover .service-number {
+    color: rgba(255, 255, 255, 0.08);
+    transform: scale(1.1) rotate(-5deg);
+}
+.service-icon, .service-title, .service-desc, .service-tech {
+    position: relative;
+    z-index: 1;
+}
+
+/* Split-Screen Contact Layout */
+.contact-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 0;
+    align-items: start;
+}
+.contact-left .massive-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+.direct-contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    width: fit-content;
+}
+.direct-contact-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-primary);
+}
+.direct-contact-btn svg {
+    color: var(--accent-primary);
+}
+.whatsapp-btn:hover {
+    background: rgba(37, 211, 102, 0.1);
+    border-color: #25D366;
+}
+.whatsapp-btn:hover svg {
+    color: #25D366;
+}
+
+/* Form Dropdown */
+.custom-select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    appearance: none;
+    transition: all 0.3s ease;
+    cursor: none !important;
+}
+.custom-select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+.custom-select option {
+    background: #111;
+    color: #fff;
+}
+
+/* Core Values Grid */
+.core-values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.value-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+.value-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+.value-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+}
+.value-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+.value-desc {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 992px) {
+    .contact-split-layout {
+        grid-template-columns: 1fr;
+    }
+    .hero-content-wrapper {
+        flex-direction: column;
+    }
+    .core-values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Wide Horizontal Service Cards */
+.service-card-wide {
+    display: flex;
+    align-items: center;
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+.service-card-wide:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.service-wide-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 8rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 1;
+    margin-left: 3rem;
+    min-width: 150px;
+    text-align: center;
+}
+.service-wide-content {
+    flex: 1;
+}
+.service-wide-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.service-wide-desc {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 800px;
+}
+.service-wide-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+.service-wide-features li {
+    display: flex;
+    align-items: center;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+.service-wide-features li::before {
+    content: '•';
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    line-height: 1;
+}
+
+@media (max-width: 992px) {
+    .service-card-wide {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+    .service-wide-number {
+        margin-left: 0;
+        margin-bottom: 1rem;
+        font-size: 5rem;
+        text-align: right;
+    }
+    .service-wide-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* RTL Adjustments */
+body {
+    text-align: right;
+}
+.nav-links {
+    margin-right: auto;
+    margin-left: 0;
+}
+@media (min-width: 992px) {
+    .nav-links {
+        margin-right: auto;
+        margin-left: 0;
+    }
+}
+.input-group label {
+    right: 1.5rem;
+    left: auto;
+    transform-origin: right;
+}
+.input-group input:focus ~ label, .input-group input:not(:placeholder-shown) ~ label, .input-group textarea:focus ~ label, .input-group textarea:not(:placeholder-shown) ~ label {
+    transform: translateY(-2rem) scale(0.85);
+}
+.select-wrapper::after {
+    left: 1.5rem;
+    right: auto;
+}
+.hero-cta {
+    justify-content: center;
+}
+
+/* Inline Expandable Drawer (Accordion) */
+.service-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, padding 0.6s ease;
+    opacity: 0;
+    width: 100%;
+    margin-top: 0;
+    border-top: 1px solid transparent;
+}
+.service-card-wide.expanded .service-accordion-content {
+    max-height: 800px;
+    opacity: 1;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+.accordion-tagline {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+.accordion-benefits-title, .accordion-value-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-family: 'Syne', 'Cairo', sans-serif;
+}
+.accordion-benefits-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.accordion-benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+.accordion-benefits-list li svg {
+    color: var(--accent-primary);
+    margin-left: 0.75rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+.accordion-value-prop {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+.service-card-wide {
+    flex-wrap: wrap; /* Allow accordion to break to new line */
+}
+.service-wide-content {
+    flex: 1 1 100%; /* Take full width for content block */
+}
+@media (min-width: 992px) {
+    .service-wide-content {
+        flex: 1; /* Restore side-by-side on desktop */
+    }
+    .service-accordion-content {
+        flex: 1 1 100%; /* Force accordion to full width below */
+    }
+}
+
+/* Emergency Layout Fixes */
+.services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 24px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: auto !important;
+}
+
+.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: #050505 !important;
+}
+
+section.container {
+    padding-top: 120px !important;
+}
+
+
+/* --- EMERGENCY RECOVERY --- */
+.text-accent {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.services-grid, .portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.service-card, .portfolio-card {
+    background: #121212 !important;
+    border: 1px solid #222 !important;
+    border-radius: 16px !important;
+    padding: 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+
+/* --- UI/UX OVERHAUL --- */
+html, body { cursor: none !important; }
+
+
+
+.text-accent {
+    background: linear-gradient(135deg, #ffffff, #7000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Service Accordion Drawer */
+.service-card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: none !important;
+}
+.service-card:hover {
+    border-color: #ffffff;
+    transform: translateY(-5px);
+}
+.service-drawer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+    border-top: 1px solid transparent;
+}
+.service-card.expanded .service-drawer {
+    max-height: 800px; /* arbitrary large value */
+    opacity: 1;
+    padding-top: 24px;
+    margin-top: 24px;
+    border-top-color: #333;
+}
+.drawer-title { color: #ffffff; margin-bottom: 12px; font-size: 1.2rem; }
+.drawer-text { color: #aaa; margin-bottom: 20px; line-height: 1.6; }
+
+/* Portfolio 2x2 Grid */
+.portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px !important;
+    visibility: visible !important;
+}
+@media (max-width: 768px) {
+    .portfolio-grid { grid-template-columns: 1fr !important; }
+}
+.portfolio-card img {
+    height: 280px !important;
+    object-fit: cover !important;
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+/* --- CRITICAL BUG FIXES --- */
+section, .services-section, .work-showcase, .reviews-section, .hero {
+    padding-top: 120px !important;
+    margin-top: -60px !important;
+}
+
+.global-service-drawer {
+    grid-column: 1 / -1;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 32px;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+    margin-top: 16px;
+}
+.global-service-drawer.active {
+    display: block;
+}
+.global-service-drawer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.close-drawer-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px; /* RTL aware if needed, will be handled visually */
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: none !important;
+    transition: color 0.2s;
+}
+.close-drawer-btn:hover {
+    color: #ffffff;
+}
+[dir="ltr"] .close-drawer-btn {
+    right: 16px;
+    left: auto;
+}
+[dir="rtl"] .close-drawer-btn {
+    left: 16px;
+    right: auto;
+}
+
+
+/* --- UX/RTL REPAIRS --- */
+section, .services-section, .work-showcase, .reviews-section {
+    padding-block: 5rem !important; /* Consistent vertical whitespace */
+}
+
+/* Service Numbers */
+.service-number {
+    position: absolute;
+    top: -20px;
+    inset-inline-end: 10px; /* Logical RTL */
+    font-size: 8rem;
+    font-weight: 900;
+    color: #ffffff;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+    line-height: 1;
+}
+
+.service-card {
+    position: relative;
+    overflow: hidden;
+    height: auto !important; /* Ensure dynamic height */
+    text-align: start; /* RTL logical property */
+}
+
+/* Contact Form Overhaul */
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.form-group input,
+.form-group textarea,
+.form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    color: #fff !important;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #ffffff !important;
+    outline: none !important;
+}
+
+.contact-form button[type="submit"],
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    align-self: flex-start; /* Logical RTL alignment */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Smooth Interactive Elements */
+a, button, .service-card, .portfolio-card {
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* ==========================================================================
+   AGGRESSIVE ACCORDION OVERLAP FIX
+   ========================================================================== */
+
+/* 1. Nuke Max-Heights and Absolute Positions on Accordion Drawers */
+.service-drawer, 
+.accordion-content, 
+.service-accordion-content {
+    max-height: none !important;
+    height: auto !important;
+    position: relative !important;
+    display: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
+}
+
+/* 2. Show Accordion when Expanded */
+.service-card.expanded .service-drawer,
+.service-card.expanded .accordion-content,
+.service-card.expanded .service-accordion-content {
+    display: block !important;
+    height: auto !important;
+}
+
+/* 3. Force Cards to be Flexible and Grow */
+.service-card, 
+.portfolio-card {
+    position: relative !important;
+    height: auto !important;
+    min-height: max-content !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 2rem !important; /* Fallback gap */
+    overflow: visible !important;
+}
+
+/* 4. Enforce Layout Reflow and Gap on Grids */
+.services-grid, 
+.portfolio-grid, 
+.work-grid {
+    display: grid !important;
+    gap: 2.5rem !important;
+    height: auto !important;
+    overflow: visible !important;
+    align-items: flex-start !important; /* Prevents stretching cards unnaturally */
+}
+
+/* 5. Ensure Containers Don't Clip Expanding Content */
+section.container, 
+.services-section, 
+.container {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+
+
+
+/* ==========================================================================
+   GLOBAL CURSOR & NARDO GRAY THEME OVERRIDES
+   ========================================================================== */
+:root {
+    --accent-primary: #ffffff !important;
+    --accent-secondary: #A0A5AA !important;
+}
+
+
+
+.text-accent {
+    background: linear-gradient(to left, #7A8288 0%, #ffffff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.15)) !important;
+    text-shadow: none !important;
+}
+
+.btn-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+.stat-number, .stat-counter {
+    color: #ffffff !important;
+}
+
+
+
+
+/* --- SERVICE CARDS OVERRIDE --- */
+.services-container, .cards-wrapper, .services-grid {
+    max-width: 1380px !important;
+    width: 94% !important;
+    margin: 0 auto !important;
+    gap: 24px !important;
+}
+
+.service-card {
+    min-height: 380px !important;
+    padding: 50px 24px 40px 24px !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+.service-card:hover {
+    transform: none !important;
+}
+
+.service-number, .card-number {
+    position: absolute !important;
+    top: 10px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    font-size: 100px !important;
+    font-weight: 800 !important;
+    color: rgba(255, 255, 255, 1) !important;
+    opacity: 0.12 !important;
+    z-index: 1 !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+    transform-origin: center center !important;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease !important;
+}
+
+.service-card:hover .service-number, .service-card:hover .card-number {
+    transform: translateX(-50%) scale(1.08) !important;
+    opacity: 0.18 !important;
+}
+
+.card-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    text-align: right;
+}
+
+.service-title {
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+}
+
+.service-desc {
+    font-size: 0.9rem !important;
+    color: #a0a5aa !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    position: relative !important;
+    bottom: auto !important;
+}
+
+.service-card { overflow: hidden !important; }
+
+
+/* --- EXPANDABLE ACCORDION OVERRIDES --- */
+
+.services-grid {
+    display: flex !important;
+    flex-direction: row;
+    gap: 24px !important;
+    max-width: 1380px !important;
+    width: 94% !important;
+    margin: 0 auto !important;
+    flex-wrap: nowrap; /* prevent wrapping to enable 0-width collapse */
+}
+
+@media (max-width: 991px) {
+    .services-grid {
+        flex-direction: column !important;
+    }
+}
+
+.service-card {
+    flex: 1;
+    min-height: 380px !important;
+    padding: 50px 24px 40px 24px !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease, margin 0.6s ease, padding 0.6s ease, min-height 0.6s ease !important;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: none !important;
+}
+
+.service-number, .card-number {
+    position: absolute !important;
+    top: 10px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    font-size: 100px !important;
+    font-weight: 800 !important;
+    color: rgba(255, 255, 255, 1) !important;
+    opacity: 0.12 !important;
+    z-index: 1 !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, left 0.6s ease !important;
+}
+
+.service-card:hover .service-number, .service-card:hover .card-number {
+    transform: translateX(-50%) scale(1.08) !important;
+    opacity: 0.18 !important;
+}
+
+.card-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    text-align: right;
+    min-width: 250px;
+}
+
+/* Expanded Card State */
+.service-card.expanded {
+    flex: 0 0 100% !important;
+    cursor: default;
+    justify-content: space-between !important;
+    background: #111; /* subtle active background */
+}
+
+@media (min-width: 992px) {
+    .service-card.expanded {
+        flex-direction: row !important;
+        align-items: center;
+        padding: 60px !important;
+    }
+    .service-card.expanded .card-content {
+        flex: 0 0 35%;
+    }
+    .service-card.expanded .service-number {
+        left: 20% !important;
+        transform: translateX(0) scale(1.5) !important;
+        opacity: 0.05 !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .service-card.expanded {
+        min-height: 700px !important;
+    }
+    .expanded-details {
+        flex-direction: column !important;
+    }
+}
+
+/* Hidden Sibling State */
+.service-card.hidden-card {
+    flex: 0 !important;
+    min-height: 0 !important;
+    opacity: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    pointer-events: none !important;
+}
+
+/* Extra Details State */
+.expanded-details {
+    display: flex;
+    flex: 1;
+    gap: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease 0.3s, visibility 0.4s ease 0.3s;
+    text-align: right;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card.expanded .expanded-details {
+    opacity: 1;
+    visibility: visible;
+}
+
+.details-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.drawer-text {
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.8;
+}
+
+.close-card-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: background 0.3s ease, opacity 0.3s ease 0.3s, visibility 0.3s ease 0.3s;
+}
+
+.close-card-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.service-card.expanded .close-card-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide old wide cards completely */
+.service-card-wide, .service-accordion-content, .global-service-drawer {
+    display: none !important;
+}
+
+
+/* USER REQUESTED HEIGHT AND PADDING FIXES */
+.service-card:not(.expanded) {
+    min-height: 380px !important;
+    height: 380px !important;
+    padding: 35px 24px 30px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.service-card.expanded {
+    height: auto !important;
+    min-height: 480px !important;
+    padding: 45px 35px !important;
+    justify-content: flex-start !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+@media (min-width: 992px) {
+    .service-card.expanded {
+        padding: 45px 35px !important; /* Override the previous 60px padding */
+    }
+}
+
+
+/* --- EMERGENCY OVERRIDES --- */
+
+.service-card {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    min-height: 380px !important;
+    height: auto !important;
+    padding: 30px 24px 30px 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.service-card:not(.expanded) {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    min-height: 380px !important;
+    height: auto !important;
+    padding: 30px 24px 30px 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.card-content {
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: 60px !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.service-number, .card-number {
+    position: absolute !important;
+    top: 15px !important;
+    right: 20px !important;
+    left: auto !important;
+    transform: none !important; /* Cancel any previous translate */
+    font-size: 90px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    opacity: 0.1 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.service-card:hover .service-number, .service-card:hover .card-number {
+    transform: scale(1.08) !important;
+    opacity: 0.15 !important;
+}
+
+
+/* --- FINAL COMPACT CARD OVERRIDES --- */
+
+.service-card:not(.expanded), .card:not(.expanded) {
+    height: 360px !important;
+    min-height: 360px !important;
+    max-height: 360px !important;
+    padding: 24px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.service-number, .card-number {
+    position: absolute !important;
+    top: 10px !important;
+    right: 15px !important;
+    left: auto !important;
+    font-size: 85px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    opacity: 0.08 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.service-icon, .card-icon {
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
+}
+
+.card-content {
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 0 !important; /* Override the previous 60px margin */
+}
+
+.service-title, .card-title {
+    font-size: 1.1rem !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+}
+
+.service-desc, .card-description {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+}
+
+
+/* --- INTERNAL SPACING & OVERLAP FIXES --- */
+
+.service-card:not(.expanded), .card:not(.expanded) {
+    min-height: 380px !important;
+    height: 380px !important;
+    max-height: 380px !important; /* Force fixed height since user wanted it equal, but their prompt says min-height: 380px. Let's strictly follow their prompt. */
+    padding: 24px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; /* allow margin-top on content to push it down */
+}
+
+/* User's dynamic expanded state should be preserved */
+.service-card.expanded {
+    height: auto !important;
+    min-height: 480px !important;
+    max-height: none !important;
+}
+
+.service-number, .card-number {
+    position: absolute !important;
+    top: 10px !important;
+    right: 20px !important;
+    left: auto !important;
+    font-size: 75px !important;
+    font-weight: 800 !important;
+    opacity: 0.08 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    line-height: 1 !important;
+}
+
+.card-content, .card-body, .card-content-wrapper {
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: 50px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+.service-icon, .card-icon {
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
+.service-title, .card-title {
+    font-size: 1.15rem !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+}
+
+.service-desc, .card-description {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    color: #9aa0a6 !important;
+    margin: 0 !important;
+}
+
+
+/* --- FINE-TUNE HOVER CLEARANCE --- */
+
+.service-card:not(.expanded), .card:not(.expanded) {
+    padding: 20px 24px 28px 24px !important;
+}
+
+.service-number, .card-number {
+    top: 6px !important;
+    right: 18px !important;
+}
+
+.card-content, .card-body, .card-content-wrapper {
+    margin-top: 75px !important;
+}
+
+
+/* --- SECTION CONTAINER & DIVIDER REFINEMENTS --- */
+
+.services-section, .services-wrapper, .expertise-section-container {
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 45px 35px !important;
+}
+
+.section-header-divider, .header-bottom-border {
+    width: 100% !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    margin-top: 20px !important;
+    margin-bottom: 35px !important;
+    display: block !important;
+}
+
+
+/* --- INTERACTIVE TESTIMONIALS CAROUSEL --- */
+
+.testimonials-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    /* Smart padding to align with container dynamically */
+    padding-left: max(24px, calc((100vw - 1380px) / 2));
+    padding-right: max(24px, calc((100vw - 1380px) / 2));
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 40px; /* Space for shadow */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.testimonials-track::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card {
+    flex: 0 0 360px;
+    scroll-snap-align: start;
+    background: #121212 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 35px 30px !important;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 300px;
+    }
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+.testimonial-stars {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+}
+
+.testimonial-quote {
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+    color: #e8eaed !important;
+    margin-bottom: 24px !important;
+    font-style: italic;
+}
+
+.testimonial-author {
+    color: #ffffff !important;
+    font-size: 1.05rem !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+.testimonial-company {
+    font-size: 0.85rem !important;
+    color: #888 !important;
+    margin: 4px 0 16px 0 !important;
+}
+
+.client-website-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--accent-primary, #ffffff);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+}
+
+.client-website-link:hover {
+    opacity: 0.8;
+    transform: translateX(-4px); /* Moves left in RTL */
+    border-bottom-color: var(--accent-primary, #ffffff);
+}
+
+.testimonials-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.testimonials-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.testimonials-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+
+/* --- REVIEW MODAL STYLES --- */
+
+.testimonial-card {
+    cursor: pointer !important;
+}
+
+.testimonial-card:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.read-more-hint {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-primary, #00f0ff);
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .read-more-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.custom-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px;
+    width: 90%;
+    max-width: 600px;
+    z-index: 10000;
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: right;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-client-name {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal-client-role {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.modal-full-review-text {
+    font-size: 1.1rem;
+    color: #e8eaed;
+    line-height: 1.8;
+}
+
+.live-demo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    background: var(--accent-primary, #ffffff);
+    color: #000;
+    transition: transform 0.2s ease;
+}
+
+.live-demo-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+
+/* --- PURE ACCORDION FLEX-GROW EXPANSION --- */
+
+.services-grid {
+    display: flex !important;
+    width: 100% !important;
+    height: 480px !important;
+    gap: 16px !important;
+    position: relative !important;
+    flex-direction: row !important;
+    transition: all 0.5s ease;
+}
+
+@media (max-width: 991px) {
+    .services-grid {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+}
+
+.service-card {
+    flex: 1 !important; /* Equal default width */
+    height: 100% !important;
+    min-height: 480px !important; /* Match parent */
+    transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    position: relative !important;
+    margin: 0 !important;
+    
+    /* Remove any previous transform logic */
+    animation: none !important;
+    transform: none !important;
+    clip-path: none !important;
+}
+
+/* Ensure inner content remains structured */
+.service-card .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+@media (min-width: 992px) {
+    .service-card.expanded {
+        flex-grow: 10 !important; /* Expands smoothly sideways */
+        opacity: 1 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 32px !important;
+        padding-top: 60px !important; /* Push down for background number */
+        align-items: start !important;
+    }
+    
+    .services-grid.has-expanded .service-card:not(.expanded) {
+        flex-grow: 0.1 !important;
+        opacity: 0.3 !important;
+        pointer-events: none;
+    }
+}
+
+.service-card .expanded-details {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s !important;
+    display: none;
+}
+
+.service-card.expanded .expanded-details {
+    opacity: 1;
+    display: block;
+}
+
+.service-card .close-card-btn {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 30 !important;
+    display: none;
+}
+
+.service-card.expanded .close-card-btn {
+    display: flex;
+}
+
+
+/* --- ACCORDION CONTAINMENT & CLICKABILITY FIXES --- */
+
+/* 1. Containment Overflow */
+.expertise-section-container, .services-wrapper {
+    position: relative !important;
+    overflow: hidden !important; /* Strictly crops child overflow */
+}
+
+.services-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+.service-card:not(.expanded) {
+    min-width: 0 !important; /* Prevents text/content flex-basis expansion from breaking boundaries */
+}
+
+/* 2. Clickable Shrunken Cards */
+.services-grid.has-expanded .service-card:not(.expanded) {
+    cursor: pointer !important;
+    pointer-events: auto !important; /* Restores interactivity to shrunken tabs */
+}
+
+
+
+/* --- STRICT FLEX-ACCORDION REFACTOR --- */
+
+.services-grid {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 480px !important;
+    height: 100% !important;
+    gap: 12px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    flex-direction: row !important;
+}
+
+@media (max-width: 991px) {
+    .services-grid {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+}
+
+.service-card, .card {
+    flex: 1 !important;
+    transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    /* Clean up previous rules */
+    margin: 0 !important;
+    max-width: none !important;
+    animation: none !important;
+    border-radius: 20px !important;
+}
+
+/* Ensure minimal width prevention so content doesn't force expansion */
+.service-card:not(.expanded) {
+    min-width: 0 !important;
+}
+
+@media (min-width: 992px) {
+    .service-card.expanded {
+        flex: 8 !important; /* Expands horizontally */
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 32px !important;
+        align-items: start !important;
+        padding-top: 60px !important;
+    }
+    
+    .services-grid.has-expanded .service-card:not(.expanded) {
+        flex: 0.8 !important; /* Shrunken side tabs */
+        cursor: pointer !important;
+        opacity: 0.6 !important;
+        pointer-events: auto !important;
+    }
+
+    .services-grid.has-expanded .service-card:not(.expanded):hover {
+        opacity: 0.9 !important;
+    }
+}
+
+/* Hover Number Visibility */
+.service-card.expanded .service-number {
+    opacity: 0 !important;
+    transition: opacity 0.35s ease, transform 0.35s ease !important;
+    pointer-events: none !important;
+}
+.service-card.expanded:hover .service-number {
+    opacity: 0.15 !important;
+}
+
+/* Strict Horizontal Expansion for content */
+.service-card .expanded-details {
+    transform-origin: center right !important; /* RTL slide origin */
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+}
+.service-card:not(.expanded) .expanded-details {
+    position: absolute !important; /* Prevent taking layout space */
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+    pointer-events: none !important;
+}
+.service-card.expanded .expanded-details {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+    pointer-events: auto !important;
+}
+
+/* Unified Close Button */
+.service-card .close-card-btn {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 60 !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    font-size: 16px !important;
+    text-decoration: none !important;
+}
+.service-card:not(.expanded) .close-card-btn {
+    display: none !important;
+}
+.service-card .close-card-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+
+/* --- STATIC BACKGROUND NUMBER FIX --- */
+
+/* 1. Static Position Lock */
+.service-card .service-number, .card .card-number {
+    position: absolute !important;
+    top: 20px !important;
+    right: 25px !important; /* Fixed anchor point in RTL */
+    transform: scale(1) !important; /* Zero translation/movement */
+    transition: opacity 0.35s ease, transform 0.35s ease !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
+}
+
+/* 2. Expanded State Base Visibility */
+.service-card.expanded .service-number, .card.expanded .card-number {
+    opacity: 0 !important;
+    transform: scale(1) !important; /* Stays anchored in place */
+}
+
+/* 3. Hover Effect (Scale Only - No Movement) */
+.service-card.expanded:hover .service-number, .card.expanded:hover .card-number,
+.service-card:hover .service-number, .card:hover .card-number {
+    opacity: 0.15 !important;
+    transform: scale(1.1) !important; /* Grows slightly in place without moving X/Y */
+}
+
+
+/* --- STATIC NUMBER & CURSOR FIX --- */
+
+/* 1. Close Button Cursor Force */
+.service-card .close-card-btn, .service-card .close-card-btn *,
+.card .close-btn, .card .close-btn * {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* 2. Permanent Static Number Shift */
+.service-card .service-number, .card .card-number {
+    position: absolute !important;
+    top: 30px !important;
+    right: 40px !important; /* Shifted further inside */
+    opacity: 0.12 !important; /* Permanent visibility */
+    transform: none !important;
+    transition: none !important;
+    pointer-events: none !important;
+}
+
+/* Block all hover/expansion overrides */
+.service-card:hover .service-number, 
+.service-card.expanded:hover .service-number, 
+.service-card.expanded .service-number,
+.card:hover .card-number, 
+.card.expanded:hover .card-number, 
+.card.expanded .card-number {
+    opacity: 0.12 !important;
+    transform: none !important;
+}
+
+
+/* --- CURSOR OVERRIDE & CONTAINMENT BOUNDARIES --- */
+
+/* 1. Custom Cursor Override (Prevent Default Leak) */
+.expertise-section-container, .services-grid, .service-card, .service-card *, .close-card-btn, .close-card-btn * {
+    cursor: none !important;
+}
+
+/* 2. Container Boundaries & Bleed Prevention */
+.expertise-section-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+.services-grid {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: space-between !important;
+}
+
+
+/* --- STRICT CURSOR SUPPRESSION & CUSTOM CURSOR HOOK --- */
+
+/* 1. Global Cursor Suppression */
+.expertise-section-container, 
+.services-grid, 
+.service-card, 
+.service-card *, 
+.service-card:not(.expanded), 
+.service-card.expanded, 
+.close-card-btn,
+.card,
+.card *,
+.card:not(.expanded),
+.card.expanded,
+.close-btn {
+    cursor: none !important; /* Strips away Windows pointer completely */
+}
+
+/* 2. Maintain custom cursor interaction without leaks */
+.services-grid.has-expanded .service-card:not(.expanded),
+.cards-container.has-expanded .card:not(.expanded) {
+    pointer-events: auto !important;
+    cursor: none !important;
+}
+
+/* 3. Custom Cursor JS Hook Z-Index Fix */
+.custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline {
+    pointer-events: none !important; /* Prevents cursor element from blocking clicks */
+    z-index: 9999 !important; /* Always sits on top of all expanded & shrunken cards */
+}
+
+
+/* --- ABSOLUTE CURSOR SUPPRESSION ON CLOSE BUTTON --- */
+
+.close-btn, 
+.card .close-btn, 
+.close-icon, 
+.close-btn *, 
+button.close, 
+svg.close,
+.service-card .close-card-btn,
+.service-card .close-card-btn * {
+    cursor: none !important; /* Strips away native arrow/hand pointer */
+}
+
+/* Ensure Custom Cursor Tracks Over Close Button */
+.custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline {
+    pointer-events: none !important;
+    z-index: 10000 !important; /* Higher than close button z-index */
+}
+
+
+/* --- MOBILE & TOUCH CUSTOM CURSOR FIX --- */
+
+/* 1. Hide on Mobile & Touch Screens */
+@media (max-width: 768px), (pointer: coarse) {
+    .custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+    
+    /* Restore standard browser cursors on all elements previously suppressed */
+    body, html, a, button, .menu-btn, .hamburger,
+    .expertise-section-container, .services-grid, .service-card, .service-card *, .close-card-btn, .close-card-btn *, .card, .card *, .close-btn {
+        cursor: auto !important; 
+    }
+}
+
+/* 2. Double-check Pointer Events for Desktop */
+.custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline {
+    pointer-events: none !important; /* Critical to pass clicks through */
+}
+
+
+/* --- MOBILE MENU FIX --- */
+
+.hamburger, .menu-btn, .mobile-menu-toggle {
+    position: relative !important;
+    z-index: 99999 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+@media (max-width: 768px) {
+    .hamburger, .menu-btn, .mobile-menu-toggle {
+        display: block !important;
+    }
+}
+
+
+/* --- HAMBURGER ICON VISIBILITY & ANIMATION FIX --- */
+
+@media (max-width: 768px) {
+    .hamburger, .menu-btn, .mobile-menu-toggle {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 28px !important;
+        height: 20px !important;
+        background: transparent !important;
+        border: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 99999 !important;
+    }
+
+    .hamburger span, .menu-btn span, .mobile-menu-toggle span {
+        display: block !important;
+        width: 100% !important;
+        height: 2px !important;
+        background-color: #ffffff !important;
+        border-radius: 2px !important;
+        opacity: 1 !important;
+        transition: transform 0.3s ease, opacity 0.3s ease !important;
+    }
+
+    /* Animated Toggle State (X icon transition) */
+    .hamburger.is-active span:nth-child(1), .menu-btn.is-active span:nth-child(1), .mobile-menu-toggle.is-active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg) !important;
+    }
+    
+    .hamburger.is-active span:nth-child(2), .menu-btn.is-active span:nth-child(2), .mobile-menu-toggle.is-active span:nth-child(2) {
+        opacity: 0 !important;
+    }
+    
+    .hamburger.is-active span:nth-child(3), .menu-btn.is-active span:nth-child(3), .mobile-menu-toggle.is-active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg) !important;
+    }
+}
+
+
+/* --- MOBILE VIEW CARD REFINEMENTS --- */
+
+@media (max-width: 768px) {
+    /* 1. Shift Background Number Outwards */
+    .service-card .service-number, .card .card-number, .card .number-bg {
+        right: 20px !important;
+        top: 20px !important;
+    }
+
+    /* 2. Shift Service Icon Downwards */
+    .service-card .service-icon, 
+    .card .icon-wrapper, 
+    .card .card-icon, 
+    .card svg.icon {
+        margin-top: 35px !important;
+        position: relative !important;
+        top: 15px !important;
+    }
+}
+
+
+/* --- CUSTOM CURSOR VIEWPORT FADE --- */
+
+.custom-cursor, #custom-cursor, .cursor-dot, .cursor-outline {
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease-out !important;
+    will-change: transform, opacity;
+}
+
+.custom-cursor.is-hidden, #custom-cursor.is-hidden, .cursor-dot.is-hidden, .cursor-outline.is-hidden {
+    opacity: 0 !important;
+    transform: scale(0.3) !important;
+    pointer-events: none !important;
 }
