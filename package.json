@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node -e \"const fs = require('fs'); if (fs.existsSync('dist/_redirects')) fs.unlinkSync('dist/_redirects');\"",
     "preview": "vite preview"
   },
   "dependencies": {
