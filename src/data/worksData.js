@@ -1,0 +1,65 @@
+// ============================================================
+//  src/data/worksData.js
+//  Portfolio/works card content. Edit here to change projects.
+// ============================================================
+
+export const worksData = [
+  {
+    id: 'fintech',
+    titleKey: 'port1Title',
+    title: 'لوحة تحكم التكنولوجيا المالية',
+    tech: 'React • Node.js • AWS',
+    descKey: 'port1Desc',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'Fintech Dashboard',
+    url: null,
+    liveUrl: 'https://example.com/fintech-demo',
+    category: 'dashboards',
+  },
+  {
+    id: 'ecommerce',
+    titleKey: 'port2Title',
+    title: 'منصة تجارة إلكترونية',
+    tech: 'Next.js • Stripe • PostgreSQL',
+    descKey: 'port2Desc',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'E-Commerce',
+    url: null,
+    liveUrl: 'https://example.com/ecommerce-demo',
+    category: 'web',
+  },
+  {
+    id: 'ai-saas',
+    titleKey: 'port3Title',
+    title: 'تطبيق الذكاء الاصطناعي',
+    tech: 'Python • OpenAI • Vue.js',
+    descKey: 'port3Desc',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'AI SaaS',
+    url: null,
+    liveUrl: 'https://example.com/ai-demo',
+    category: 'ai',
+  },
+  {
+    id: 'erp',
+    titleKey: 'port4Title',
+    title: 'نظام إدارة المؤسسات',
+    tech: 'Angular • Spring Boot • Docker',
+    descKey: 'port4Desc',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'ERP System',
+    url: null,
+    liveUrl: 'https://example.com/erp-demo',
+    category: 'dashboards',
+  },
+  {
+    id: 'mobile-app',
+    title: 'E-Commerce App',
+    tech: 'Retail Brand • Flutter, Firebase',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'Mobile App',
+    url: 'https://digitfans.net/01group-demo2',
+    liveUrl: 'https://digitfans.net/01group-demo2',
+    category: 'mobile',
+  },
+];
