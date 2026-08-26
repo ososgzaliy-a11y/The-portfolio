@@ -10,6 +10,15 @@ export default function Portfolio({ lang, isEnglish, language }) {
   
   const [activeModal, setActiveModal] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const categories = [
+    { id: 'all', label: { ar: 'الكل', en: 'All' } },
+    { id: 'ecommerce', label: { ar: 'متاجر إلكترونية', en: 'E-Commerce' } },
+    { id: 'education', label: { ar: 'منصات تعليمية', en: 'Educational Platforms' } },
+    { id: 'internal', label: { ar: 'أنظمة ولوحات تحكم', en: 'Internal Systems' } },
+    { id: 'automation', label: { ar: 'حلول الذكاء والأتمتة', en: 'AI & Automation' } }
+  ];
 
   // Translation Dictionary
   const t = {
@@ -42,6 +51,7 @@ export default function Portfolio({ lang, isEnglish, language }) {
   const projects = [
     { 
       id: 1, 
+      categoryKey: 'ecommerce',
       title: { ar: "اسم المشروع الأول", en: "Digital Platform Project" }, 
       subtitle: { ar: "تصميم وتطوير منصة رقمية", en: "UI/UX & Platform Development" }, 
       desc: { 
@@ -65,6 +75,7 @@ export default function Portfolio({ lang, isEnglish, language }) {
     },
     { 
       id: 2, 
+      categoryKey: 'education',
       title: { ar: "اسم المشروع الثاني", en: "Smart Web Application" }, 
       subtitle: { ar: "تطبيقات الويب الذكية", en: "Intelligent Web Solutions" }, 
       desc: { 
@@ -87,6 +98,7 @@ export default function Portfolio({ lang, isEnglish, language }) {
     },
     { 
       id: 3, 
+      categoryKey: 'internal',
       title: { ar: "اسم المشروع الثالث", en: "Server & Systems Engineering" }, 
       subtitle: { ar: "هندسة السيرفرات والأنظمة", en: "Cloud Infrastructure Setup" }, 
       desc: { 
@@ -108,6 +120,7 @@ export default function Portfolio({ lang, isEnglish, language }) {
     },
     { 
       id: 4, 
+      categoryKey: 'automation',
       title: { ar: "اسم المشروع الرابع", en: "AI Automation Workflow" }, 
       subtitle: { ar: "حلول الأتمتة والذكاء الاصطناعي", en: "AI & Process Automation" }, 
       desc: { 
@@ -129,6 +142,10 @@ export default function Portfolio({ lang, isEnglish, language }) {
       ]
     }
   ];
+
+  const filteredProjects = activeCategory === 'all'
+    ? projects
+    : projects.filter(p => p.categoryKey === activeCategory);
 
   const currentProject = projects.find(p => p.id === activeModal);
 
@@ -194,6 +211,53 @@ export default function Portfolio({ lang, isEnglish, language }) {
           </p>
         </div>
 
+        {/* Horizontal Scrollable Categories Container */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            overflowY: 'hidden',
+            width: '100%',
+            maxWidth: '100%',
+            gap: '12px',
+            paddingBottom: '8px',
+            marginBottom: '32px',
+            touchAction: 'pan-x',
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            cursor: 'grab'
+          }}
+        >
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                style={{
+                  flexShrink: 0, // MUST BE ZERO so width exceeds screen & triggers horizontal scroll
+                  whiteSpace: 'nowrap',
+                  padding: '10px 22px',
+                  borderRadius: '9999px',
+                  border: isActive ? '1px solid #ffffff' : '1px solid #262626',
+                  backgroundColor: isActive ? '#ffffff' : '#141414',
+                  color: isActive ? '#000000' : '#a3a3a3',
+                  fontWeight: isActive ? '700' : '500',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  userSelect: 'none',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {cat.label[activeLang] || cat.label['ar']}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Projects Grid Container */}
         <div
           style={{
@@ -203,7 +267,7 @@ export default function Portfolio({ lang, isEnglish, language }) {
             width: '100%'
           }}
         >
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
               style={{

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLang } from '../../context/LanguageContext';
+import { Link } from 'react-router-dom';
 
 export default function WorksSection({ lang, isEnglish, language }) {
   const langContext = useLang();
@@ -179,8 +180,33 @@ export default function WorksSection({ lang, isEnglish, language }) {
         </p>
       </div>
 
-      {/* Grid Container */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:grid md:grid-cols-2 gap-[28px] md:gap-[28px]">
+      {/* Desktop 2x2 Grid / Mobile 1 Column Grid */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+          gap: '24px',
+          width: '100%',
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '40px 16px'
+        }}
+        className="works-grid-container"
+      >
+        {/* CSS Media Query Override */}
+        <style>{`
+          @media (min-width: 768px) {
+            .works-grid-container {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+          }
+          @media (max-width: 767px) {
+            .works-grid-container {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
+
         {projects.map((project) => (
           <div key={project.id} className="w-full">
             <div 
@@ -231,136 +257,170 @@ export default function WorksSection({ lang, isEnglish, language }) {
                 </button>
               </div>
             </div>
-            </div>
           </div>
+        </div>
         ))}
+      </div>
+
+      {/* See More Projects CTA */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px', width: '100%' }}>
+        <Link 
+          to="/portfolio" 
+          style={{ 
+            backgroundColor: '#171717', 
+            color: '#ffffff', 
+            padding: '16px 36px', 
+            borderRadius: '9999px', 
+            fontSize: '16px', 
+            fontWeight: '700', 
+            textDecoration: 'none', 
+            border: '1px solid #262626',
+            transition: 'background-color 0.3s ease',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = '#262626'}
+          onMouseLeave={(e) => e.target.style.backgroundColor = '#171717'}
+        >
+          {activeLang === 'ar' ? 'عرض كافة المشاريع ↗' : 'View All Projects ↗'}
+        </Link>
       </div>
 
       {/* Project Details Modal with Gallery */}
       {activeModal !== null && currentProject && (
         <div 
-          style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(10px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}
+          style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}
+          onClick={() => setActiveModal(null)}
         >
           <div 
-            style={{ backgroundColor: '#121212', border: '1px solid #262626', borderRadius: '32px', width: '100%', maxWidth: '1300px', height: '80vh', display: 'flex', flexDirection: 'row', overflow: 'hidden', position: 'relative' }}
+            style={{ backgroundColor: '#121212', border: '1px solid #262626', borderRadius: '24px', width: '100%', maxWidth: '850px', maxHeight: '90vh', overflowY: 'auto', position: 'relative', padding: '20px', color: '#ffffff', boxShadow: '0 24px 60px rgba(0,0,0,0.7)', boxSizing: 'border-box' }}
+            onClick={(e) => e.stopPropagation()}
+            dir={activeLang === 'ar' ? 'rtl' : 'ltr'}
           >
-            {/* Close Button - Adjusted position for RTL / LTR */}
-            <button 
-              onClick={() => setActiveModal(null)}
-              aria-label={t[activeLang]?.closeBtn || t['ar'].closeBtn}
-              style={{ position: 'absolute', top: '24px', [activeLang === 'ar' ? 'left' : 'right']: '24px', backgroundColor: '#222', color: 'white', border: '1px solid #333', width: '44px', height: '44px', borderRadius: '50%', fontSize: '18px', cursor: 'pointer', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
-            >
-              ✕
-            </button>
+            {/* Modal Top Header Bar with Clean Independent X Button */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', paddingBottom: '12px', borderBottom: '1px solid #222222' }}>
+              <span style={{ fontSize: '13px', color: '#888888', fontWeight: '600' }}>
+                {t[activeLang]?.modalSub || t['ar'].modalSub}
+              </span>
 
-            {/* Left Side (or Right in LTR): Details & Value (30%) */}
-            <div style={{ width: '30%', padding: '3rem 2rem', overflowY: 'auto', borderLeft: activeLang === 'ar' ? '1px solid #222' : 'none', borderRight: activeLang === 'en' ? '1px solid #222' : 'none', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: activeLang === 'ar' ? 'right' : 'left' }}>
-              <div>
-                <span style={{ color: '#888888', fontSize: '14px', display: 'block', marginBottom: '0.5rem' }}>
-                  {t[activeLang]?.modalSub || t['ar'].modalSub}
-                </span>
-                <h3 style={{ color: 'white', fontSize: '28px', fontWeight: 'bold', marginBottom: '1.5rem' }}>
-                  {currentProject.title[activeLang] || currentProject.title['ar']}
-                </h3>
-                
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <h4 style={{ color: '#ccc', fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                    {t[activeLang]?.keyValueTitle || t['ar'].keyValueTitle}
-                  </h4>
-                  <p style={{ color: '#999', fontSize: '14px', lineHeight: '1.6' }}>
-                    {currentProject.value[activeLang] || currentProject.value['ar']}
-                  </p>
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <h4 style={{ color: '#ccc', fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                    {t[activeLang]?.featuresTitle || t['ar'].featuresTitle}
-                  </h4>
-                  <ul style={{ color: '#999', fontSize: '14px', lineHeight: '1.7', paddingInlineStart: '1rem', listStyleType: 'disc' }}>
-                    {(currentProject.features[activeLang] || currentProject.features['ar']).map((feat, idx) => (
-                      <li key={idx}>{feat}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <a 
-                href="https://example.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{ backgroundColor: 'white', color: 'black', padding: '14px 20px', borderRadius: '14px', fontWeight: 'bold', fontSize: '14px', textAlign: 'center', textDecoration: 'none', display: 'block' }}
+              <button
+                onClick={() => setActiveModal(null)}
+                aria-label={t[activeLang]?.closeBtn || t['ar'].closeBtn}
+                style={{ backgroundColor: '#1c1c1c', border: '1px solid #333333', color: '#ffffff', width: '38px', height: '38px', borderRadius: '50%', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background-color 0.2s ease' }}
               >
-                {t[activeLang]?.visitSite || t['ar'].visitSite}
-              </a>
+                ✕
+              </button>
             </div>
 
-            {/* Right Side: Gallery Slider & Thumbnails (70%) */}
-            <div style={{ width: '70%', backgroundColor: '#0a0a0a', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '5rem 3rem 3rem 3rem' }}>
-              
-              {/* Main Active Screen Display */}
-              <div style={{ width: '100%', height: 'calc(100% - 90px)', border: '1px solid #222', borderRadius: '20px', backgroundColor: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                
-                {/* Right Arrow Button (Points Right →) */}
-                <button 
-                  onClick={handleNextImage}
-                  aria-label="Next image"
-                  style={{ position: 'absolute', right: '20px', backgroundColor: 'rgba(0,0,0,0.6)', color: 'white', border: '1px solid #333', width: '45px', height: '45px', borderRadius: '50%', cursor: 'pointer', zIndex: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
+            {/* Dynamic Responsive Layout */}
+            <div className="modal-body-wrapper">
+              <style>{`
+                .modal-body-wrapper {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 20px;
+                }
+                .gallery-container {
+                  width: 100%;
+                  height: clamp(240px, 40vh, 320px);
+                }
+                .details-container {
+                  width: 100%;
+                }
+                @media (min-width: 768px) {
+                  .modal-body-wrapper {
+                    flex-direction: ${activeLang === 'ar' ? 'row-reverse' : 'row'} !important;
+                  }
+                  .gallery-container {
+                    width: 50% !important;
+                    height: 380px !important;
+                  }
+                  .details-container {
+                    width: 50% !important;
+                  }
+                }
+              `}</style>
 
-                {/* Current Image / Mockup Text */}
-                <span style={{ color: '#fff', fontSize: '22px', fontWeight: 'bold', textAlign: 'center', padding: '0 80px' }}>
-                  {currentProject.images[activeImageIndex][activeLang] || currentProject.images[activeImageIndex]['ar']}
-                </span>
-
-                {/* Left Arrow Button (Points Left ←) */}
-                <button 
-                  onClick={handlePrevImage}
-                  aria-label="Previous image"
-                  style={{ position: 'absolute', left: '20px', backgroundColor: 'rgba(0,0,0,0.6)', color: 'white', border: '1px solid #333', width: '45px', height: '45px', borderRadius: '50%', cursor: 'pointer', zIndex: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
+              {/* Top (Mobile) / Left (Desktop): Independent Touch Swipable Gallery Box */}
+              <div
+                className="gallery-container"
+                style={{ position: 'relative', backgroundColor: '#171717', border: '1px solid #262626', borderRadius: '16px', overflow: 'hidden' }}
+              >
+                {/* Horizontal Scrollable Slide Track */}
+                <div
+                  onScroll={(e) => {
+                    const width = e.currentTarget.offsetWidth;
+                    const index = Math.round(e.currentTarget.scrollLeft / width);
+                    setActiveImageIndex(Math.abs(index));
+                  }}
+                  style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory', touchAction: 'pan-x', width: '100%', height: '100%', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
+                  {currentProject.images.map((imgObj, idx) => {
+                    const titleStr = imgObj[activeLang] || imgObj['ar'];
+                    return (
+                      <div
+                        key={idx}
+                        style={{ flexShrink: 0, width: '100%', height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#1a1a1a', color: '#888888', fontSize: '15px', fontWeight: '600', padding: '16px', boxSizing: 'border-box' }}
+                      >
+                        {titleStr}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Slider Dots Indicator */}
+                {currentProject.images.length > 1 && (
+                  <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '6px', backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '6px 12px', borderRadius: '9999px', backdropFilter: 'blur(4px)' }}>
+                    {currentProject.images.map((_, idx) => (
+                      <div
+                        key={idx}
+                        style={{ width: activeImageIndex === idx ? '16px' : '6px', height: '6px', borderRadius: '9999px', backgroundColor: activeImageIndex === idx ? '#ffffff' : '#525252', transition: 'all 0.25s ease' }}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
-              {/* Mini Photos / Thumbnails Bar (Centered) */}
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', height: '70px', marginTop: '20px', overflowX: 'auto', paddingBottom: '4px', width: '100%' }}>
-                {currentProject.images.map((imgObj, index) => {
-                  const titleStr = imgObj[activeLang] || imgObj['ar'];
-                  return (
-                    <div 
-                      key={index}
-                      onClick={() => setActiveImageIndex(index)}
-                      style={{ 
-                        minWidth: '110px', 
-                        height: '100%', 
-                        backgroundColor: '#161616', 
-                        border: activeImageIndex === index ? '2px solid white' : '1px solid #262626', 
-                        borderRadius: '12px', 
-                        cursor: 'pointer', 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
-                        padding: '0 8px',
-                        transition: 'all 0.2s',
-                        opacity: activeImageIndex === index ? 1 : 0.6
-                      }}
-                    >
-                      <span style={{ color: '#ccc', fontSize: '11px', textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {titleStr.split(' - ')[1] || titleStr}
-                      </span>
-                    </div>
-                  );
-                })}
+              {/* Bottom (Mobile) / Right (Desktop): Project Text & Details */}
+              <div className="details-container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: activeLang === 'ar' ? 'right' : 'left' }}>
+                <div>
+                  <h3 style={{ color: 'white', fontSize: '24px', fontWeight: 'bold', marginBottom: '1.5rem' }}>
+                    {currentProject.title[activeLang] || currentProject.title['ar']}
+                  </h3>
+                  
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <h4 style={{ color: '#ccc', fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                      {t[activeLang]?.keyValueTitle || t['ar'].keyValueTitle}
+                    </h4>
+                    <p style={{ color: '#999', fontSize: '14px', lineHeight: '1.6' }}>
+                      {currentProject.value[activeLang] || currentProject.value['ar']}
+                    </p>
+                  </div>
+
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <h4 style={{ color: '#ccc', fontSize: '16px', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                      {t[activeLang]?.featuresTitle || t['ar'].featuresTitle}
+                    </h4>
+                    <ul style={{ color: '#999', fontSize: '14px', lineHeight: '1.7', paddingInlineStart: '1.5rem', listStyleType: 'disc' }}>
+                      {(currentProject.features[activeLang] || currentProject.features['ar']).map((feat, idx) => (
+                        <li key={idx} style={{ paddingLeft: '4px' }}>{feat}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <a 
+                  href="https://example.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ backgroundColor: 'white', color: 'black', padding: '14px 20px', borderRadius: '14px', fontWeight: 'bold', fontSize: '14px', textAlign: 'center', textDecoration: 'none', display: 'block', marginTop: '1.5rem' }}
+                >
+                  {t[activeLang]?.visitSite || t['ar'].visitSite}
+                </a>
               </div>
 
             </div>
-
           </div>
         </div>
       )}
