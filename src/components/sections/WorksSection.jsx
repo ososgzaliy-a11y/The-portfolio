@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLang } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,30 @@ export default function WorksSection({ lang, isEnglish, language }) {
   
   const [activeModal, setActiveModal] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
+  const slideRefs = useRef([]);
+
+  const handleNext = () => {
+    if (!scrollContainerRef.current || !currentProject) return;
+    const container = scrollContainerRef.current;
+    const nextIndex = (activeImageIndex + 1) % currentProject.images.length;
+    container.scrollTo({
+      left: nextIndex * container.offsetWidth * (activeLang === 'ar' ? -1 : 1),
+      behavior: 'smooth'
+    });
+    setActiveImageIndex(nextIndex);
+  };
+
+  const handlePrev = () => {
+    if (!scrollContainerRef.current || !currentProject) return;
+    const container = scrollContainerRef.current;
+    const prevIndex = (activeImageIndex - 1 + currentProject.images.length) % currentProject.images.length;
+    container.scrollTo({
+      left: prevIndex * container.offsetWidth * (activeLang === 'ar' ? -1 : 1),
+      behavior: 'smooth'
+    });
+    setActiveImageIndex(prevIndex);
+  };
 
   // Translation Dictionary
   const t = {
@@ -133,16 +157,33 @@ export default function WorksSection({ lang, isEnglish, language }) {
 
   const currentProject = projects.find(p => p.id === activeModal);
 
-  const handleNextImage = () => {
-    if (currentProject) {
-      setActiveImageIndex((prev) => (prev + 1) % currentProject.images.length);
+  const goToSlide = (targetIndex) => {
+    if (!currentProject) return;
+    const newIndex = (targetIndex + currentProject.images.length) % currentProject.images.length;
+    setActiveImageIndex(newIndex);
+    
+    const targetElement = slideRefs.current[newIndex];
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
     }
   };
 
-  const handlePrevImage = () => {
-    if (currentProject) {
-      setActiveImageIndex((prev) => (prev - 1 + currentProject.images.length) % currentProject.images.length);
-    }
+  const scrollLeftPhysical = () => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const scrollAmount = container.offsetWidth;
+    container.scrollBy({ left: activeLang === 'ar' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+  };
+
+  const scrollRightPhysical = () => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const scrollAmount = container.offsetWidth;
+    container.scrollBy({ left: activeLang === 'ar' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
   };
 
   const openModal = (id) => {
@@ -349,10 +390,13 @@ export default function WorksSection({ lang, isEnglish, language }) {
               >
                 {/* Horizontal Scrollable Slide Track */}
                 <div
+                  ref={scrollContainerRef}
                   onScroll={(e) => {
                     const width = e.currentTarget.offsetWidth;
-                    const index = Math.round(e.currentTarget.scrollLeft / width);
-                    setActiveImageIndex(Math.abs(index));
+                    if (width > 0) {
+                      const index = Math.round(Math.abs(e.currentTarget.scrollLeft) / width);
+                      setActiveImageIndex(index);
+                    }
                   }}
                   style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory', touchAction: 'pan-x', width: '100%', height: '100%', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
                 >
@@ -361,7 +405,8 @@ export default function WorksSection({ lang, isEnglish, language }) {
                     return (
                       <div
                         key={idx}
-                        style={{ flexShrink: 0, width: '100%', height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#1a1a1a', color: '#888888', fontSize: '15px', fontWeight: '600', padding: '16px', boxSizing: 'border-box' }}
+                        ref={(el) => (slideRefs.current[idx] = el)}
+                        style={{ flexShrink: 0, width: '100%', height: '100%', scrollSnapAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#1a1a1a', color: '#888888', fontSize: '15px', fontWeight: '600', padding: '16px', boxSizing: 'border-box' }}
                       >
                         {titleStr}
                       </div>
@@ -369,13 +414,39 @@ export default function WorksSection({ lang, isEnglish, language }) {
                   })}
                 </div>
 
+                {/* Desktop Navigation Arrow Buttons */}
+                {currentProject.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={scrollLeftPhysical}
+                      aria-label="Previous image"
+                      style={{
+                        position: 'absolute', top: '50%', left: '12px', transform: 'translateY(-50%)', backgroundColor: 'rgba(20, 20, 20, 0.75)', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#ffffff', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', backdropFilter: 'blur(4px)', zIndex: 5, transition: 'all 0.2s ease'
+                      }}
+                    >
+                      ‹
+                    </button>
+
+                    <button
+                      onClick={scrollRightPhysical}
+                      aria-label="Next image"
+                      style={{
+                        position: 'absolute', top: '50%', right: '12px', transform: 'translateY(-50%)', backgroundColor: 'rgba(20, 20, 20, 0.75)', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#ffffff', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', backdropFilter: 'blur(4px)', zIndex: 5, transition: 'all 0.2s ease'
+                      }}
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
+
                 {/* Slider Dots Indicator */}
                 {currentProject.images.length > 1 && (
                   <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '6px', backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '6px 12px', borderRadius: '9999px', backdropFilter: 'blur(4px)' }}>
                     {currentProject.images.map((_, idx) => (
-                      <div
+                      <button
                         key={idx}
-                        style={{ width: activeImageIndex === idx ? '16px' : '6px', height: '6px', borderRadius: '9999px', backgroundColor: activeImageIndex === idx ? '#ffffff' : '#525252', transition: 'all 0.25s ease' }}
+                        onClick={() => goToSlide(idx)}
+                        style={{ border: 'none', padding: 0, cursor: 'pointer', width: activeImageIndex === idx ? '16px' : '6px', height: '6px', borderRadius: '9999px', backgroundColor: activeImageIndex === idx ? '#ffffff' : '#525252', transition: 'all 0.25s ease' }}
                       />
                     ))}
                   </div>
