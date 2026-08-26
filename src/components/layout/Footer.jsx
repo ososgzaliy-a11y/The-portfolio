@@ -101,7 +101,7 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="footer-section" dir={isRtl ? 'rtl' : 'ltr'}>
-      <div className="container footer-grid " style={{ textAlign: isRtl ? 'right' : 'left' }}>
+      <div className="container footer-grid grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full" style={{ textAlign: isRtl ? 'right' : 'left' }}>
         {/* Left: CTA & Social */}
         <div className="contact-info">
           <h2 className="massive-title" dir={isRtl ? 'rtl' : 'ltr'} style={{ lineHeight: isRtl ? '1.4' : '1.1', overflow: 'visible', paddingBottom: '0.2em' }}>
@@ -143,23 +143,24 @@ export default function Footer() {
         </div>
 
         {/* Right: Contact form */}
-        <form className="contact-form" id="contactForm" onSubmit={handleSubmit} onInput={handleInput} noValidate>
-          <div className="form-row">
-            <div className="input-group">
-              <input type="text" id="footer-name" name="name" required placeholder=" " />
+        <form className="contact-form space-y-6 w-full" id="contactForm" onSubmit={handleSubmit} onInput={handleInput} noValidate>
+          <div className="form-row flex flex-col md:flex-row gap-4 w-full">
+            <div className="input-group w-full">
+              <input className="w-full" type="text" id="footer-name" name="name" required placeholder=" " />
               <label htmlFor="footer-name">{t('formName')}</label>
               {renderValidationBubble('name')}
             </div>
-            <div className="input-group">
-              <input type="email" id="footer-email" name="email" required placeholder=" " />
+            <div className="input-group w-full">
+              <input className="w-full" type="email" id="footer-email" name="email" required placeholder=" " />
               <label htmlFor="footer-email">{t('formEmail')}</label>
               {renderValidationBubble('email')}
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="input-group">
+          <div className="form-row flex flex-col md:flex-row gap-4 w-full">
+            <div className="input-group w-full">
               <input 
+                className="w-full"
                 type="tel" 
                 id="footer-phone" 
                 name="phone" 
@@ -174,26 +175,41 @@ export default function Footer() {
               {renderValidationBubble('phone')}
             </div>
 
-            <div className={`input-group custom-select-wrapper ${isSelectOpen || budgetVal ? 'active' : ''}`} ref={selectRef}>
-              <input 
-                type="text" 
-                id="footer-budget" 
-                name="budget" 
-                required 
-                placeholder=" " 
-                readOnly 
-                value={budgetVal ? `${budgetVal} ${isRtl ? 'ج.م' : 'EGP'}` : ''} 
+            <div className={`input-group w-full custom-select-wrapper ${isSelectOpen || budgetVal ? 'active' : ''}`} ref={selectRef}>
+              
+              {/* Pure non-input Trigger - Zero Keyboard Flashes */}
+              <div 
+                role="button"
+                tabIndex={0}
                 dir="ltr"
-                style={{ textAlign: isRtl ? 'right' : 'left', unicodeBidi: 'isolate' }}
+                style={{ 
+                  textAlign: isRtl ? 'right' : 'left', 
+                  unicodeBidi: 'isolate', 
+                  cursor: 'pointer',
+                  outline: 'none',
+                  userSelect: 'none',
+                  WebkitTapHighlightColor: 'transparent',
+                  display: 'flex',
+                  alignItems: 'center',
+                  minHeight: '54px',
+                  width: '100%',
+                  color: budgetVal ? '#ffffff' : 'transparent',
+                  backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '12px'
+                }}
                 onClick={(e) => {
-                  if (isSelectOpen) {
-                    e.target.blur();
-                  }
+                  e.preventDefault();
                   setIsSelectOpen(!isSelectOpen);
                 }}
-                className="dropdown-trigger-input"
-              />
-              <label htmlFor="footer-budget">{t('formBudget')}</label>
+                className="dropdown-trigger-input w-full"
+              >
+                {budgetVal ? `${budgetVal} ${isRtl ? 'ج.م' : 'EGP'}` : <span style={{ opacity: 0 }}>.</span>}
+              </div>
+              <label htmlFor="footer-budget" onClick={() => setIsSelectOpen(!isSelectOpen)} style={{ cursor: 'pointer' }}>{t('formBudget')}</label>
+              
+              {/* Invisible input for form submission state placed AFTER label to avoid CSS sibling selector bugs */}
+              <input type="hidden" id="footer-budget" name="budget" required value={budgetVal} />
               
               <div className="dropdown-icons-container" dir="ltr">
                 <svg 
@@ -249,8 +265,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="input-group">
-            <textarea id="footer-message" name="message" rows="3" required placeholder=" "></textarea>
+          <div className="input-group w-full">
+            <textarea className="w-full" id="footer-message" name="message" rows="3" required placeholder=" "></textarea>
             <label htmlFor="footer-message">{t('formMessage')}</label>
             {renderValidationBubble('message')}
           </div>

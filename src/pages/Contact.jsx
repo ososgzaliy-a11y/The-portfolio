@@ -66,7 +66,7 @@ export default function Contact() {
       className="container "
       style={{ paddingTop: '15vh', paddingBottom: '5vh' }}
     >
-      <div className="contact-split-layout">
+      <div className="contact-split-layout flex flex-col lg:flex-row gap-12 lg:gap-16 w-full">
 
         {/* Left: CTA & Direct Contact */}
         <div className="contact-left">
@@ -103,25 +103,26 @@ export default function Contact() {
         </div>
 
         {/* Right: Contact Form */}
-        <div className="contact-right">
-          <form className="contact-form" id="contactForm" style={{ margin: '0' }} onSubmit={handleSubmit}>
+        <div className="contact-right w-full lg:w-1/2">
+          <form className="contact-form space-y-6" id="contactForm" style={{ margin: '0' }} onSubmit={handleSubmit}>
             
             {/* Row 1: Name & Email */}
-            <div className="form-row">
-              <div className="input-group">
-                <input type="text" id="name" name="name" required placeholder=" " value={formData.name} onChange={handleChange} />
+            <div className="form-row flex flex-col md:flex-row gap-4 md:gap-6 w-full">
+              <div className="input-group w-full">
+                <input className="w-full" type="text" id="name" name="name" required placeholder=" " value={formData.name} onChange={handleChange} />
                 <label htmlFor="name">{t('formName')}</label>
               </div>
-              <div className="input-group">
-                <input type="email" id="email" name="email" required placeholder=" " value={formData.email} onChange={handleChange} />
+              <div className="input-group w-full">
+                <input className="w-full" type="email" id="email" name="email" required placeholder=" " value={formData.email} onChange={handleChange} />
                 <label htmlFor="email">{t('formEmail')}</label>
               </div>
             </div>
 
             {/* Row 2: Phone & Service */}
-            <div className="form-row">
-              <div className="input-group">
+            <div className="form-row flex flex-col md:flex-row gap-4 md:gap-6 w-full">
+              <div className="input-group w-full">
                 <input 
+                  className="w-full"
                   type="tel" 
                   id="phone" 
                   name="phone" 
@@ -135,9 +136,10 @@ export default function Contact() {
                 />
                 <label htmlFor="phone">{t('formPhone') || 'Phone / WhatsApp'}</label>
               </div>
-              <div className="input-group">
+              <div className="input-group w-full">
                 <div style={{ position: 'relative', width: '100%' }}>
                   <select 
+                    className="w-full"
                     id="service" 
                     name="service" 
                     required 
@@ -183,9 +185,10 @@ export default function Contact() {
             </div>
 
             {/* Row 3: Budget */}
-            <div className="input-group" style={{ marginBottom: '1.5rem' }}>
+            <div className="input-group w-full" style={{ marginBottom: '1.5rem' }}>
               <div style={{ position: 'relative', width: '100%' }}>
                 <select 
+                  className="w-full"
                   id="budget" 
                   name="budget" 
                   required 
@@ -230,8 +233,8 @@ export default function Contact() {
             </div>
 
             {/* Row 4: Message */}
-            <div className="input-group" style={{ marginBottom: '2rem' }}>
-              <textarea id="message" name="message" rows="4" required placeholder=" " value={formData.message} onChange={handleChange}></textarea>
+            <div className="input-group w-full" style={{ marginBottom: '2rem' }}>
+              <textarea className="w-full" id="message" name="message" rows="4" required placeholder=" " value={formData.message} onChange={handleChange}></textarea>
               <label htmlFor="message">{t('formMessage')}</label>
             </div>
 

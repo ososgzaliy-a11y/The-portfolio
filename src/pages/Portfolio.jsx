@@ -150,94 +150,189 @@ export default function Portfolio({ lang, isEnglish, language }) {
   };
 
   return (
-    <section 
-      dir={activeLang === 'ar' ? 'rtl' : 'ltr'} 
-      className="w-full py-24 px-6 md:px-16 bg-black" 
-      style={{ width: '100%' }}
+    <main
+      style={{
+        width: '100%',
+        minHeight: '100vh',
+        backgroundColor: '#0a0a0a',
+        color: '#ffffff',
+        paddingTop: '110px',
+        paddingBottom: '80px',
+        boxSizing: 'border-box'
+      }}
+      dir={activeLang === 'ar' ? 'rtl' : 'ltr'}
     >
-      
-      {/* Section Header */}
-      <div 
-        className={`mx-auto mb-16 ${activeLang === 'ar' ? 'text-right' : 'text-left'}`}
-        style={{ width: '100%', maxWidth: '1400px', margin: '0 auto 4rem auto' }}
+      <div
+        style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          paddingLeft: '16px',
+          paddingRight: '16px'
+        }}
       >
-        <h2 
-          className="text-white font-black tracking-tight mb-4 flex flex-wrap items-center"
-          style={{ 
-            fontSize: 'clamp(2.5rem, 4vw, 4rem)', 
-            lineHeight: '1.2',
-            gap: '0.45em'
+        {/* Header Title Section */}
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <h1
+            style={{
+              fontSize: 'clamp(28px, 5vw, 44px)',
+              fontWeight: '800',
+              color: '#ffffff',
+              marginBottom: '12px'
+            }}
+          >
+            {t[activeLang]?.sectionTag || t['ar'].sectionTag} <span style={{ color: '#9ca3af' }}>{t[activeLang]?.sectionTagHighlight || t['ar'].sectionTagHighlight}</span>
+          </h1>
+          <p
+            style={{
+              fontSize: 'clamp(14px, 2vw, 16px)',
+              color: '#a3a3a3',
+              maxWidth: '600px',
+              margin: '0 auto'
+            }}
+          >
+            {t[activeLang]?.sectionSub || t['ar'].sectionSub}
+          </p>
+        </div>
+
+        {/* Projects Grid Container */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '24px',
+            width: '100%'
           }}
         >
-          <span>{t[activeLang]?.sectionTag || t['ar'].sectionTag}</span>
-          <span style={{ color: '#9ca3af' }}>{t[activeLang]?.sectionTagHighlight || t['ar'].sectionTagHighlight}</span>
-        </h2>
-        <p 
-          className="text-neutral-400 font-medium"
-          style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.15rem)' }}
-        >
-          {t[activeLang]?.sectionSub || t['ar'].sectionSub}
-        </p>
-      </div>
-
-      {/* Grid Container */}
-      <div 
-        className="mx-auto"
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '3rem', width: '100%', maxWidth: '1400px', margin: '0 auto' }}
-      >
-        {projects.map((project) => (
-          <div 
-            key={project.id}
-            className="bg-[#151515] rounded-[36px] border border-neutral-800 flex flex-col justify-between transition-all hover:border-neutral-700"
-            style={{ backgroundColor: '#151515', borderRadius: '36px', border: '1px solid #262626', minHeight: '660px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '2.5rem' }}
-          >
-            {/* Header */}
-            <div style={{ marginBottom: '1.5rem', textAlign: activeLang === 'ar' ? 'right' : 'left' }}>
-              <h3 style={{ color: 'white', fontSize: '28px', fontWeight: 'bold', marginBottom: '0.6rem' }}>
-                {project.title[activeLang] || project.title['ar']}
-              </h3>
-              <span style={{ color: '#888888', fontSize: '15px' }}>
-                {project.subtitle[activeLang] || project.subtitle['ar']}
-              </span>
-            </div>
-
-            {/* Middle Image Container */}
-            <div 
-              className="w-full bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden flex items-center justify-center"
-              style={{ width: '100%', height: '260px', backgroundColor: '#0a0a0a', borderRadius: '24px', border: '1px solid #262626', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.5rem 0' }}
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              style={{
+                backgroundColor: '#121212',
+                border: '1px solid #262626',
+                borderRadius: '24px',
+                padding: '24px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'border-color 0.3s ease, transform 0.3s ease',
+                boxSizing: 'border-box'
+              }}
             >
-              <span style={{ color: '#525252', fontSize: '16px', textAlign: 'center', padding: '0 20px' }}>
-                {project.images[0][activeLang] || project.images[0]['ar']}
-              </span>
-            </div>
+              {/* Card Header & Category */}
+              <div>
+                <h2
+                  style={{
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    color: '#ffffff',
+                    marginBottom: '4px',
+                    textAlign: activeLang === 'ar' ? 'right' : 'left'
+                  }}
+                >
+                  {project.title[activeLang] || project.title['ar']}
+                </h2>
+                <span
+                  style={{
+                    fontSize: '13px',
+                    color: '#a3a3a3',
+                    display: 'block',
+                    marginBottom: '20px',
+                    textAlign: activeLang === 'ar' ? 'right' : 'left'
+                  }}
+                >
+                  {project.subtitle[activeLang] || project.subtitle['ar']}
+                </span>
 
-            {/* Footer with Description & Action Buttons */}
-            <div style={{ marginTop: '1.2rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: activeLang === 'ar' ? 'right' : 'left' }}>
-              <p style={{ color: '#a3a3a3', fontSize: '15px', lineHeight: '1.6' }}>
-                {project.desc[activeLang] || project.desc['ar']}
-              </p>
-              
-              {/* Action Buttons */}
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', flexDirection: 'row' }}>
-                <a 
-                  href="https://example.com" 
-                  target="_blank" 
+                {/* Media Preview Box */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: '210px',
+                    backgroundColor: '#171717',
+                    border: '1px solid #262626',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#525252',
+                    fontSize: '14px',
+                    marginBottom: '20px'
+                  }}
+                >
+                  {project.images[0][activeLang] || project.images[0]['ar']}
+                </div>
+
+                {/* Project Description */}
+                <p
+                  style={{
+                    fontSize: '14px',
+                    color: '#d4d4d4',
+                    lineHeight: '1.6',
+                    marginBottom: '24px',
+                    textAlign: activeLang === 'ar' ? 'right' : 'left'
+                  }}
+                >
+                  {project.desc[activeLang] || project.desc['ar']}
+                </p>
+              </div>
+
+              {/* Action Buttons Footer */}
+              <div
+                style={{
+                  display: 'flex',
+                  gap: '12px',
+                  width: '100%',
+                  marginTop: 'auto'
+                }}
+              >
+                <a
+                  href="https://example.com"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  style={{ flex: 1, backgroundColor: 'white', color: 'black', padding: '12px 20px', borderRadius: '14px', fontWeight: 'bold', fontSize: '14px', textAlign: 'center', textDecoration: 'none', display: 'inline-block' }}
+                  style={{
+                    flex: 1,
+                    padding: '12px 16px',
+                    backgroundColor: '#ffffff',
+                    color: '#000000',
+                    fontWeight: '700',
+                    borderRadius: '12px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    fontSize: '14px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px'
+                  }}
                 >
                   {t[activeLang]?.liveDemo || t['ar'].liveDemo}
                 </a>
-                <button 
+
+                <button
                   onClick={() => openModal(project.id)}
-                  style={{ flex: 1, backgroundColor: 'transparent', color: 'white', border: '1px solid #333333', padding: '12px 20px', borderRadius: '14px', fontWeight: 'bold', fontSize: '14px', cursor: 'pointer' }}
+                  style={{
+                    flex: 1,
+                    padding: '12px 16px',
+                    backgroundColor: '#171717',
+                    border: '1px solid #262626',
+                    color: '#ffffff',
+                    fontWeight: '600',
+                    borderRadius: '12px',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    fontSize: '14px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer'
+                  }}
                 >
                   {t[activeLang]?.viewDetails || t['ar'].viewDetails}
                 </button>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
       {/* Project Details Modal with Gallery */}
       {activeModal !== null && currentProject && (
@@ -367,6 +462,7 @@ export default function Portfolio({ lang, isEnglish, language }) {
           </div>
         </div>
       )}
-    </section>
+      </div>
+    </main>
   );
 }

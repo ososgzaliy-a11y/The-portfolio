@@ -16,11 +16,11 @@ export default function HeroSection() {
   const isRtl = lang === 'ar';
 
   return (
-    <section id="hero" className="hero container text-center" style={{ textAlign: 'center' }} dir={isRtl ? 'rtl' : 'ltr'}>
-      <div className="hero-content-wrapper text-center mx-auto" style={{ display: 'block' }}>
+    <section id="hero" className="hero container text-center px-4 md:px-8 py-12 md:py-20" style={{ textAlign: 'center' }} dir={isRtl ? 'rtl' : 'ltr'}>
+      <div className="hero-content-wrapper text-center mx-auto w-full" style={{ display: 'block' }}>
         <div className="hero-text-content text-center mx-auto" style={{ maxWidth: '800px', margin: '0 auto' }}>
 
-          <h1 className="hero-title text-center mx-auto" style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.4', textAlign: 'center' }} dir={isRtl ? 'rtl' : 'ltr'}>
+          <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-center mx-auto w-full" style={{ maxWidth: '800px', margin: '0 auto', lineHeight: '1.4', textAlign: 'center' }} dir={isRtl ? 'rtl' : 'ltr'}>
             {lang === 'en' ? (
               <>
                 <span style={{ display: 'block' }}>We Design</span>
@@ -40,7 +40,7 @@ export default function HeroSection() {
             )}
           </h1>
 
-          <p className="hero-subtitle text-center mx-auto" style={{ maxWidth: '600px', margin: '1.5rem auto', textAlign: 'center' }}>
+          <p className="hero-subtitle text-lg md:text-xl lg:text-2xl text-center mx-auto w-full px-2" style={{ maxWidth: '600px', margin: '1.5rem auto', textAlign: 'center' }}>
             {t('heroSubtitle')}
           </p>
 
@@ -54,9 +54,9 @@ export default function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="stats-container" style={{ justifyContent: 'center', maxWidth: '600px', margin: '3rem auto 0', paddingTop: '3rem' }}>
+          <div className="stats-container flex flex-col md:flex-row gap-8 items-center w-full" style={{ justifyContent: 'center', maxWidth: '600px', margin: '3rem auto 0', paddingTop: '3rem' }}>
             {STATS.map(({ target, suffix, labelKey }) => (
-              <div className="stat-item" key={labelKey}>
+              <div className="stat-item flex flex-col items-center" key={labelKey}>
                 <div>
                   <span className="stat-number stat-counter" data-target={target}>0</span>
                   <span className="stat-number">{suffix}</span>

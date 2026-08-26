@@ -152,8 +152,7 @@ export default function WorksSection({ lang, isEnglish, language }) {
   return (
     <section 
       dir={activeLang === 'ar' ? 'rtl' : 'ltr'} 
-      className="w-full py-24 px-6 md:px-16 bg-black" 
-      style={{ width: '100%' }}
+      className="w-full py-16 md:py-24 px-4 sm:px-6 md:px-16 bg-black overflow-x-hidden"
     >
       
       {/* Section Header */}
@@ -181,16 +180,13 @@ export default function WorksSection({ lang, isEnglish, language }) {
       </div>
 
       {/* Grid Container */}
-      <div 
-        className="mx-auto"
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '3rem', width: '100%', maxWidth: '1400px', margin: '0 auto' }}
-      >
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:grid md:grid-cols-2 gap-[28px] md:gap-[28px]">
         {projects.map((project) => (
-          <div 
-            key={project.id}
-            className="bg-[#151515] rounded-[36px] border border-neutral-800 flex flex-col justify-between transition-all hover:border-neutral-700"
-            style={{ backgroundColor: '#151515', borderRadius: '36px', border: '1px solid #262626', minHeight: '660px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '2.5rem' }}
-          >
+          <div key={project.id} className="w-full">
+            <div 
+              className="w-full h-full bg-[#121212] rounded-[20px] border border-[#262626] flex flex-col justify-between transition-all hover:border-neutral-700"
+              style={{ minHeight: '560px', padding: '20px' }}
+            >
             {/* Header */}
             <div style={{ marginBottom: '1.5rem', textAlign: activeLang === 'ar' ? 'right' : 'left' }}>
               <h3 style={{ color: 'white', fontSize: '28px', fontWeight: 'bold', marginBottom: '0.6rem' }}>
@@ -234,6 +230,7 @@ export default function WorksSection({ lang, isEnglish, language }) {
                   {t[activeLang]?.viewDetails || t['ar'].viewDetails}
                 </button>
               </div>
+            </div>
             </div>
           </div>
         ))}
