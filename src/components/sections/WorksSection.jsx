@@ -14,27 +14,6 @@ export default function WorksSection({ lang, isEnglish, language }) {
   const scrollContainerRef = useRef(null);
   const slideRefs = useRef([]);
 
-  const handleNext = () => {
-    if (!scrollContainerRef.current || !currentProject) return;
-    const container = scrollContainerRef.current;
-    const nextIndex = (activeImageIndex + 1) % currentProject.images.length;
-    container.scrollTo({
-      left: nextIndex * container.offsetWidth * (activeLang === 'ar' ? -1 : 1),
-      behavior: 'smooth'
-    });
-    setActiveImageIndex(nextIndex);
-  };
-
-  const handlePrev = () => {
-    if (!scrollContainerRef.current || !currentProject) return;
-    const container = scrollContainerRef.current;
-    const prevIndex = (activeImageIndex - 1 + currentProject.images.length) % currentProject.images.length;
-    container.scrollTo({
-      left: prevIndex * container.offsetWidth * (activeLang === 'ar' ? -1 : 1),
-      behavior: 'smooth'
-    });
-    setActiveImageIndex(prevIndex);
-  };
 
   // Translation Dictionary
   const t = {
@@ -172,19 +151,8 @@ export default function WorksSection({ lang, isEnglish, language }) {
     }
   };
 
-  const scrollLeftPhysical = () => {
-    if (!scrollContainerRef.current) return;
-    const container = scrollContainerRef.current;
-    const scrollAmount = container.offsetWidth;
-    container.scrollBy({ left: activeLang === 'ar' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
-  };
-
-  const scrollRightPhysical = () => {
-    if (!scrollContainerRef.current) return;
-    const container = scrollContainerRef.current;
-    const scrollAmount = container.offsetWidth;
-    container.scrollBy({ left: activeLang === 'ar' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-  };
+  const handleNext = () => goToSlide(activeImageIndex + 1);
+  const handlePrev = () => goToSlide(activeImageIndex - 1);
 
   const openModal = (id) => {
     setActiveModal(id);
@@ -383,9 +351,10 @@ export default function WorksSection({ lang, isEnglish, language }) {
                 }
               `}</style>
 
-              {/* Top (Mobile) / Left (Desktop): Independent Touch Swipable Gallery Box */}
+              {/* FORCED LTR GALLERY CONTAINER FOR PERFECT RTL/LTR CONSISTENCY */}
               <div
                 className="gallery-container"
+                dir="ltr"
                 style={{ position: 'relative', backgroundColor: '#171717', border: '1px solid #262626', borderRadius: '16px', overflow: 'hidden' }}
               >
                 {/* Horizontal Scrollable Slide Track */}
@@ -418,7 +387,7 @@ export default function WorksSection({ lang, isEnglish, language }) {
                 {currentProject.images.length > 1 && (
                   <>
                     <button
-                      onClick={scrollLeftPhysical}
+                      onClick={handlePrev}
                       aria-label="Previous image"
                       style={{
                         position: 'absolute', top: '50%', left: '12px', transform: 'translateY(-50%)', backgroundColor: 'rgba(20, 20, 20, 0.75)', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#ffffff', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', backdropFilter: 'blur(4px)', zIndex: 5, transition: 'all 0.2s ease'
@@ -428,7 +397,7 @@ export default function WorksSection({ lang, isEnglish, language }) {
                     </button>
 
                     <button
-                      onClick={scrollRightPhysical}
+                      onClick={handleNext}
                       aria-label="Next image"
                       style={{
                         position: 'absolute', top: '50%', right: '12px', transform: 'translateY(-50%)', backgroundColor: 'rgba(20, 20, 20, 0.75)', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#ffffff', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', backdropFilter: 'blur(4px)', zIndex: 5, transition: 'all 0.2s ease'
