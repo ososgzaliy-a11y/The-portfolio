@@ -29,11 +29,26 @@ export default function Navbar() {
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.style.height = '100dvh';
+      document.body.style.touchAction = 'none';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.body.style.touchAction = '';
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => { 
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.body.style.touchAction = '';
+    };
   }, [isMobileMenuOpen]);
+
+  // Prevent swiping/scrolling gestures on the overlay itself
+  const handleTouchMove = (e) => {
+    if (isMobileMenuOpen) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -155,16 +170,20 @@ export default function Navbar() {
       {/* PORTAL TO BODY: Prevents any parent clipping/transform bugs */}
       {mounted && createPortal(
         <div 
+          onTouchMove={handleTouchMove}
           style={{ 
             position: 'fixed', 
             inset: 0, 
             zIndex: 999998, 
             width: '100vw', 
-            height: '100vh', 
+            height: '100dvh', 
             display: 'flex',
             pointerEvents: isMobileMenuOpen ? 'auto' : 'none',
             visibility: isMobileMenuOpen ? 'visible' : 'hidden',
-            transition: isMobileMenuOpen ? 'visibility 0s' : 'visibility 0s 350ms'
+            transition: isMobileMenuOpen ? 'visibility 0s' : 'visibility 0s 350ms',
+            overflow: 'hidden',
+            touchAction: 'none',
+            overscrollBehavior: 'contain'
           }}
         >
           {/* Animated Backdrop */}
